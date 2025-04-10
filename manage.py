@@ -2,7 +2,7 @@ import Project
 
 def main():
     try:
-        Project.project.run(port = 8000)
+        Project.project.run(port = 8000 ,debug = True)
     except Exception as error:
         print(error)
 
