@@ -4,10 +4,11 @@ from Project.settings import DATABASE
 
 def render_registration():
     if flask.request.method == 'POST':
-        user = User(login = flask.request.form['name'], 
+        user = User(
+                   
+                    login = flask.request.form['login'], 
                     password = flask.request.form["password"], 
                     email = flask.request.form["email"], 
-                    password_confirm = flask.request.form["password_confirm"],
                     is_teacher = False
                     )
                
@@ -15,8 +16,8 @@ def render_registration():
             DATABASE.session.add(user)
             DATABASE.session.commit()
             return flask.redirect("/core/")
-        except:
-            print(":hkeopihnwjiouewh")
+        except Exception as e:
+            print(f"Ошибка при добавлении пользователя в базу данных: {e}")
             return 'ERROR'
     return flask.render_template(template_name_or_list= "registration.html")
 
