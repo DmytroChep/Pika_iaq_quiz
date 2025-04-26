@@ -4,7 +4,7 @@ import os
 
 from .settings import project
 
-
+project.app_context().push()
 
 project.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
 DATABASE = flask_sqlalchemy.SQLAlchemy(
