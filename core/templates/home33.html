@@ -1,15 +1,17 @@
-{% extends "base.html" %}
 
 
-{% block title %}Main Page{% endblock %}
 
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
     
-{% block link %}  
-<link rel="stylesheet" href="{{ url_for('core.static', filename='css/styles.css') }}" >
-<script src="script.js" defer></script>
-{% endblock %}
+    <link rel="stylesheet" href="{{ url_for('core.static', filename='css/styles.css') }}" >
+    <script src="script.js" defer></script>
+</head>
 
-{% block content %}
+<body>
 
     <header>
         
@@ -20,15 +22,8 @@
             <p class="LogoText">Pikaiq</p>
             <div class="rightMenu">
                 <div class="nameUsername">
-                    {% if current_user.is_authenticated %}
-                    
-                        <p class="username">{{ current_user.login }}</p>
-                    
-                    {% else %}
-
-                        <p class="username">Name</p>
-                        <p class="username">Second name</p>
-                    {% endif %}
+                    <p class="username">Name</p>
+                    <p class="username">Second name</p>
                 </div>
                 <div class="burgerMenu">
                     
@@ -94,4 +89,4 @@
 
 </body>
 
-{% endblock %}
+</html>

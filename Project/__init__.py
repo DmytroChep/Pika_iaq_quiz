@@ -12,4 +12,6 @@ import core
 project.register_blueprint(blueprint= core.core_app)
 project.register_blueprint(blueprint= registration.reg_app)
 
+project.register_blueprint(blueprint= user_profile.user_profile)
+
 

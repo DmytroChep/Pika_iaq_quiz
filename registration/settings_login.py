@@ -7,7 +7,7 @@ def login():
         if user.password == flask.request.form["password"]:
             flask_login.login_user(user)
             print("sucsessfully login user:", flask.request.form["username"])
-            return flask.redirect("/")
+            return None
         else:
             print("failed to login")
-            return flask.redirect("/login")
+            return "failed to login"

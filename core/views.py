@@ -1,4 +1,6 @@
 import flask
+from Project.toolbox import config_page
 
+@config_page(template_name= 'home.html')
 def render_core():
-    return flask.render_template(template_name_or_list= "home.html")
+    return {}

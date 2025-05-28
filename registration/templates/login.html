@@ -1,19 +1,24 @@
-{% extends "base.html" %}
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('registration.static', filename='css/registration.css') }}" >
+    <title>PikaIQ | Реєстрація </title>
+    <style>
+    
+    </style>
+</head>
+<body>
+    <div class="header"><img src="pikalq_icon.png"><span>PikalQ</span></div>
+      
+      <div class="form-container">
+        <input type="text" id="username" placeholder="Enter your username">
+        
+        <input type="password" id="password" placeholder="Enter your password">
+        
+      </div>
+      
+      <div class="container"><button>Sign Up</button></div>
 
-{% block title %}Regestr{% endblock %}
-
-{% block content %}
-
-<form method="POST">
-    <div>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-    </div>
-    <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-    </div>
-    <button type="submit">Sign up</button>
-</form>
-
-{% endblock %}
+</body>
+</html>

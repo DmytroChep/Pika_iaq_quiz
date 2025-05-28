@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block title %}Profile{% endblock %}
+{% block link %}<link rel="stylesheet" href="{{url_for('user_profile.static', filename= 'css/profile.css')}}">{% endblock %}
+
+
+
+{% block content %} 
+<header>
+        
+        <img src="{{ url_for('core.static', filename= 'images/logo/logo.png') }}">
+
+
+        <div class="nameBurger">
+            <p class="LogoText">Pikaiq</p>
+            <div class="rightMenu">
+                <div class="nameUsername">
+                    {% if current_user.is_authenticated %}
+                    
+                        <p class="username">{{ current_user.login }}</p>
+                    
+                    {% else %}
+
+                        <p class="username">Name</p>
+                        <p class="username">Second name</p>
+                    {% endif %}
+                </div>
+                <div class="burgerMenu">
+                    
+                    <img src="{{ url_for('core.static', filename= 'images/burger/burger.png') }}">
+                </div>
+            </div>
+        </div>
+
+</header>
+
+<main> 
+    <div class="visible">
+        <div class="container"  class="profiletext">
+            <img src="{{url_for('user_profile.static', filename= 'static/images/олег.jpg')}}" alt="profile picture" id="visibleprofileimage">
+            
+            {% if current_user.is_authenticated %}
+                    
+                <p id="profilename" class="profiletext">
+                    Name :{{ current_user.login }}
+                </p>
+               
+
+            {% else %}
+                <p id="profilename" class="profiletext">
+                    Name
+                </p>
+                
+            {% endif %}
+            
+            
+           
+        </div>
+        
+
+        <div class="container">
+            <p id="user_profilename" class="profiletext">
+                @user_profile_name
+            </p>
+        </div>
+
+        <div class="container" id = "buttoncontainer">
+            <div>
+                <button class = "change">Change name</button>
+                <button onclick="document.getElementById('fileInput').click()" class = "change">Change avatar</button>
+
+                <input type="file" id="fileInput" style="display: none;">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="unvisible">
+        {% if current_user.is_authenticated %}
+                    
+            <div class="container">
+                <p id="email"  class="profiletext">
+                   email :{{ current_user.email }}
+                </p>
+            </div>
+            
+
+        {% else %}
+            <div class="container">
+                <p id="email"  class="profiletext">
+                    email@gmail.com
+                </p>
+            </div>
+                
+        {% endif %}
+        
+        <div class="container"  class="profiletext">
+            <p id="phone"  class="profiletext">
+                +380123456789
+            </p>
+        </div>
+        {% if current_user.is_authenticated %}
+                    
+            <div class="container"  class="profiletext">
+                <p id="password"  class="profiletext">
+                   Password: {{ current_user.password }}
+                </p>
+            </div>
+            
+
+        {% else %}
+             <div class="container"  class="profiletext">
+                <p id="password"  class="profiletext">
+                    Password
+                </p>
+            </div>
+                
+        {% endif %}
+
+       
+    </div>
+</main>
+{% endblock %}

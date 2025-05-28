@@ -1,0 +1,68 @@
+
+
+header { 
+    background-color: #F5D23B;
+    height: 74px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    border-bottom: 1px solid black;
+    display: flex;
+    gap: 800px;
+}
+
+header img { 
+    height: 55px;
+}
+
+header .nameBurger .LogoText { 
+    font-size: 36px;
+    letter-spacing: 15px;
+    font-family: GreatVibe;
+}
+
+header .nameBurger { 
+    width: 175px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    gap: 600px;
+}
+
+header .nameBurger .nameUsername { 
+    background-color: white;
+    border-radius: 11px;
+    width: 163px;
+    height: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    padding-right: 7px;
+}
+
+header .nameBurger .nameUsername p { 
+    width: 100px;
+    font-size: 17px;
+}
+
+header .nameBurger .burgerMenu { 
+    width: 46px;
+    height: 46px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 11px;
+}
+
+header .nameBurger .burgerMenu img {
+    width: 24px;
+    height: 24px;
+}
+
+header .nameBurger .rightMenu {  
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+

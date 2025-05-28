@@ -1,0 +1,238 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: GreatVibe;
+    src: url(fonts/GreatVibe.ttf);
+}
+
+@font-face {
+    font-family: Jost;
+    src: url(fonts/Jost.ttf);
+}
+
+
+body * {
+    font-family: Jost;
+}
+
+
+#all {
+    background-color: #F5D23B;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+
+
+header {
+    background-color: #F5D23B;
+    height: 74px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    border-bottom: 1px solid black;
+    display: flex;
+    gap: 800px;
+}
+
+header img {
+    height: 55px;
+}
+
+header .nameBurger .LogoText {
+    font-size: 36px;
+    letter-spacing: 15px;
+    font-family: GreatVibe;
+}
+
+header .nameBurger {
+    width: 175px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    gap: 600px;
+}
+
+header .nameBurger .nameUsername {
+    background-color: white;
+    border-radius: 11px;
+    width: 163px;
+    height: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    padding-right: 7px;
+}
+
+header .nameBurger .nameUsername p {
+    width: 100px;
+    font-size: 17px;
+}
+
+header .nameBurger .burgerMenu {
+    width: 46px;
+    height: 46px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 11px;
+}
+
+header .nameBurger .burgerMenu img {
+    width: 24px;
+    height: 24px;
+}
+
+header .nameBurger .rightMenu {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 37px;
+    flex-wrap: wrap;
+}
+
+main .findBlock {
+    width: 692px;
+    height: 81px;
+    background-color: #F5D23B;
+    border-radius: 13px;
+    border: 1px solid black;
+
+    display: flex;
+    align-items: center;
+    padding-left: 16px;
+    gap: 36px;
+}
+
+main .findBlock .findQuiz .findGlass {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+main .findBlock .findQuiz .findGlass img {
+    width: 28px;
+    height: 28px;
+    padding-left: 10px;
+}
+
+main .findBlock .findQuiz .findGlass input {
+    font-size: 24px;
+    border: 0;
+    width: 175px;
+}
+
+
+
+main .findBlock .findQuiz {
+    display: flex;
+    align-items: center;
+    gap: 103px;
+    width: 362px;
+    height: 55px;
+    background-color: white;
+    border-radius: 50px;
+}
+
+main .findBlock .findQuiz .joinButton {
+    width: 104px;
+    height: 35px;
+    border-radius: 15px;
+    border: 0;
+    background-color: #96E99C;
+    font-size: 24px;
+}
+
+
+main .findBlock .newButton {
+    width: 261px;
+    height: 50px;
+
+    background-color: white;
+    border: 0;
+    border-radius: 15px;
+
+    font-size: 24px;
+}
+
+main .filters {
+    width: 100%;
+    margin-top: 57px;
+    margin-left: 34px;
+}
+
+main .filters button {
+    background-color: white;
+    border: 0;
+    border-radius: 50px;
+    font-size: 24px;
+
+    box-shadow: 0 0.2em 0.2em lightgray;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+main .geography {
+    width: 100%;
+    align-items: start;
+    padding-left: 32px;
+    font-size: 24px;
+    margin-top: 17px;
+}
+
+main .listTests {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 35px;
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 63px;
+}
+
+main .test {
+    width: 197px;
+    height: 197px;
+    padding-top: 8px;
+    border: 1px solid #919191;
+    border-radius: 15px;
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+
+main .test img {
+    width: 181px;
+    height: 132px;
+    border-radius: 15px;
+}
+
+main .test .testName {
+    font-size: 20px;
+    width: 100%;
+    text-align: end;
+    padding-right: 8px;
+}
+
+main .test p {
+    font-size: 15px;
+    width: 100%;
+    text-align: end;
+    padding-right: 8px;
+}
