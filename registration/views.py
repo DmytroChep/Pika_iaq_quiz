@@ -7,7 +7,7 @@ def render_registration():
     if flask.request.method == 'POST':
         user = User(
                    
-                    login = flask.request.form['login'], 
+                    login = flask.request.form['username'], 
                     password = flask.request.form["password"], 
                     email = flask.request.form["email"], 
                     is_teacher = False
@@ -30,15 +30,17 @@ def render_registration():
 def render_authorization():
     
     if flask.request.method == "POST":
-        username_form = flask.request.form["login"]
+        print ("wqdwqdfqwfdwqfwqfqfwqf")
+        username_form = flask.request.form['username'], 
         password_form = flask.request.form["password"]
 
         list_users = User.query.all()
         for user in list_users:
-            if user.username == username_form and user.password == password_form:
+            if User.login == username_form and User.password == password_form:
+        #        print ("wqdwqdfqwfdwqfwqfqfwqf")
                 flask_login.login_user(user)
     if not flask_login.current_user.is_authenticated:
-        return flask.render_template("authorization.html")
+        return flask.render_template("login.html")
     else:
         return flask.redirect("/")
 

@@ -9,16 +9,23 @@
     </style>
 </head>
 <body>
-    <div class="header"><img src="pikalq_icon.png"><span>PikalQ</span></div>
-      
-      <div class="form-container">
-        <input type="text" id="username" placeholder="Enter your username">
-        
-        <input type="password" id="password" placeholder="Enter your password">
-        
-      </div>
-      
-      <div class="container"><button>Sign Up</button></div>
+ <form method="POST">
+        <div class="form-container">
+            <label for="username">Nickname</label>
+            <input type="text" id="username" name="username" placeholder="Enter your nickname" required>
+
+            
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+            
+        </div>
+
+        <div class="container">
+            <button type="submit">Sign Up</button>
+        </div>
+    </form>
 
 </body>
 </html>

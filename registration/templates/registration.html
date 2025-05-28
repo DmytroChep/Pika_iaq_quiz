@@ -10,15 +10,25 @@
 </head>
 <body>
     <div class="header"><img src="pikalq_icon.png"><span>PikalQ</span></div>
-      
-      <div class="form-container">
-        <input type="text"  id="username" placeholder="Enter your nickname">
-        <input type="email" id="email" placeholder="Enter your email">
-        <input type="password" id="password" placeholder="Enter your password">
-        <input type="password" id="Confirm_password" placeholder="Confirm your password">
-      </div>
-      
-      <div class="container"><button>Sign Up</button></div>
+     <form method="POST">
+        <div class="form-container">
+            <label for="username">Nickname</label>
+            <input type="text" id="username" name="username" placeholder="Enter your nickname" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+            <label for="Confirm_password">Confirm Password</label>
+            <input type="password" id="Confirm_password" name="confirm_password" placeholder="Confirm your password" required>
+        </div>
+
+        <div class="container">
+            <button type="submit">Sign Up</button>
+        </div>
+    </form>
 
 </body>
 </html>
