@@ -1,6 +1,9 @@
 import flask
-from Project.toolbox import config_page
+from flask import render_template, redirect
+from flask_login import current_user
 
-@config_page(template_name= 'home.html')
 def render_core():
-    return {}
+    if current_user.is_authenticated:
+        return render_template(template_name_or_list= 'home.html')
+    else:
+        return redirect("registration")

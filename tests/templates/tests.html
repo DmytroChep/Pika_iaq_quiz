@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}Tests Page{% endblock title %}
+{% block link %}
+<link rel="stylesheet" href="{{url_for('tests.static', filename= 'css/tests.css')}}">
+{% endblock link %}
+{% block content %}
+<div class="header">
+
+    <div class="quiz-name">
+        <span>Quiz name</span>
+    </div>
+
+    <div class="search">
+        <img src="{{url_for('tests.static', filename= 'images/search.svg')}}" alt="loupe">
+        <input type="text" placeholder="search for a template for a question">
+    </div>
+
+    <div class="left-quiz">
+        <div><a href="/"><img src="{{url_for('tests.static', filename= 'images/logout.svg')}}" alt="left quiz"></a></div>
+    </div>
+
+</div>
+</div>
+<div class="test-settings">
+    <div>
+        <input type="text" placeholder="test name" maxlength="20" minlength="3">
+    </div>
+    <div>
+        <input type="text" placeholder="test description">
+    </div>
+</div>
+<div class="add">
+    <button id="add-question" type="button">Add question</button>
+    <button type="button" onclick="document.getElementById('file').click()"><img src="{{url_for('tests.static', filename= 'images/add_image.svg')}}" alt="add-image"></button>
+    <input type="file" accept="image/*" id = "file" style="display: none;">
+</div>
+<div class="questions-holder">
+    <div class="question-background">
+        <div class="question">
+            <span>Тест</span>
+        </div>
+    </div>
+    <div class="question-background">
+        <div class="question">
+            <span>Тест</span>
+        </div>
+    </div>
+    <div class="question-background">
+        <div class="question">
+            <span>Тест</span>
+        </div>
+    </div>
+
+
+</div>
+<div class="text-holder">
+    <span>3 questions</span>
+</div>
+{% endblock content %}

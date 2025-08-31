@@ -13,4 +13,3 @@ project = flask.Flask(
     instance_path= os.path.abspath(os.path.join(__file__, '..', 'instance')),
 )
 
-

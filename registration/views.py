@@ -16,7 +16,6 @@ def render_registration():
         try:
             DATABASE.session.add(user)
             DATABASE.session.commit()
-            #login()
             
                
             
@@ -30,23 +29,33 @@ def render_registration():
 def render_authorization():
     
     if flask.request.method == "POST":
-        print ("wqdwqdfqwfdwqfwqfqfwqf")
         username_form = flask.request.form['username'], 
         password_form = flask.request.form["password"]
 
         list_users = User.query.all()
         for user in list_users:
-            if User.login == username_form and User.password == password_form:
-        #        print ("wqdwqdfqwfdwqfwqfqfwqf")
+            if user.login == username_form and user.password == password_form:
+                print(user)
                 flask_login.login_user(user)
-    if not flask_login.current_user.is_authenticated:
+                return flask.redirect("/")
+
         return flask.render_template("login.html")
-    else:
-        return flask.redirect("/")
+        
 
 def render_login():
     if flask.request.method == "POST":
-        login()
-        return flask.redirect("/")
+        username_form = flask.request.form['username']
+        password_form = flask.request.form["password"]
+
+        list_users = User.query.all()
+        print(list_users)
+        print(username_form, password_form)
+        for user in list_users:
+            if user.login == username_form and user.password == password_form:
+                print(user)
+                flask_login.login_user(user)
+                return flask.redirect("/")
+
+        return flask.render_template("login.html")
     
     return flask.render_template(template_name_or_list= "login.html")
