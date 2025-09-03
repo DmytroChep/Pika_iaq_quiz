@@ -35,89 +35,11 @@
 </header>
 
 <main> 
-    <div class="visible">
-        <div class="container"  class="profiletext">
-            <img src="{{url_for('user_profile.static', filename= 'static/images/олег.jpg')}}" alt="profile picture" id="visibleprofileimage">
-            
-            {% if current_user.is_authenticated %}
-                    
-                <p id="profilename" class="profiletext">
-                    Name :{{ current_user.login }}
-                </p>
-               
-
-            {% else %}
-                <p id="profilename" class="profiletext">
-                    Name
-                </p>
-                
-            {% endif %}
-            
-            
-           
-        </div>
-        
-
-        <div class="container">
-            <p id="user_profilename" class="profiletext">
-                @user_profile_name
-            </p>
-        </div>
-
-        <div class="container" id = "buttoncontainer">
-            <div>
-                <button class = "change">Change name</button>
-                <button onclick="document.getElementById('fileInput').click()" class = "change">Change avatar</button>
-
-                <input type="file" id="fileInput" style="display: none;">
-            </div>
-        </div>
-
-    </div>
-
-    <div class="unvisible">
-        {% if current_user.is_authenticated %}
-                    
-            <div class="container">
-                <p id="email"  class="profiletext">
-                   email :{{ current_user.email }}
-                </p>
-            </div>
-            
-
-        {% else %}
-            <div class="container">
-                <p id="email"  class="profiletext">
-                    email@gmail.com
-                </p>
-            </div>
-                
-        {% endif %}
-        
-        <div class="container"  class="profiletext">
-            <p id="phone"  class="profiletext">
-                +380123456789
-            </p>
-        </div>
-        {% if current_user.is_authenticated %}
-                    
-            <div class="container"  class="profiletext">
-                <p id="password"  class="profiletext">
-                   Password: {{ current_user.password }}
-                </p>
-            </div>
-            
-
-        {% else %}
-             <div class="container"  class="profiletext">
-                <p id="password"  class="profiletext">
-                    Password
-                </p>
-            </div>
-                
-        {% endif %}
-
-       
-    </div>
+    <form method = "post" enctype="multipart/form-data">
+        <p>Username:<input type="text" name = "username" required placeholder="{{current_user.login}}" value="{{current_user.login}}"></p>
+        <p>Gmail:<input type="email" name = "gmail" required placeholder="{{current_user.email}}" value="{{current_user.email}}"></p>
+        <p>password:<input type="password" required name = "password" placeholder="{{current_user.password}}" value="{{current_user.password}}"></p>
+        <button>submit</button>
+    </form>
 </main>
 {% endblock %}

@@ -7,3 +7,4 @@ def render_core():
         return render_template(template_name_or_list= 'home.html')
     else:
         return redirect("registration")
+        return redirect("registration")

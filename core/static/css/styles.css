@@ -33,12 +33,13 @@ button {
 header {
     background-color: #F5D23B;
     height: 74px;
+    width: 100vw;
     display: flex;
     align-items: center;
     padding-left: 10px;
     border-bottom: 1px solid black;
     display: flex;
-    gap: 800px;
+    justify-content: space-between;
 }
 
 header img {
@@ -56,10 +57,10 @@ header .nameBurger {
     height: 58px;
     display: flex;
     align-items: center;
-    gap: 600px;
 }
 
-header .nameBurger .nameUsername {
+
+.nameUsername {
     background-color: white;
     border-radius: 11px;
     width: 163px;
@@ -67,10 +68,9 @@ header .nameBurger .nameUsername {
     display: flex;
     flex-direction: column;
     align-items: end;
-    padding-right: 7px;
 }
 
-header .nameBurger .nameUsername p {
+header .nameUsername p {
     width: 100px;
     font-size: 17px;
 }
@@ -90,7 +90,7 @@ header .nameBurger .burgerMenu img {
     height: 24px;
 }
 
-header .nameBurger .rightMenu {
+header  .rightMenu {
     display: flex;
     gap: 10px;
     align-items: center;

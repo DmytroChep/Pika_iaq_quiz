@@ -10,6 +10,7 @@ class User(DATABASE.Model, flask_login.UserMixin):
     password = DATABASE.Column(DATABASE.String(50), nullable = False)
     
     is_teacher = DATABASE.Column(DATABASE.Boolean, default = False, nullable = False)
+    avatar = DATABASE.Column(DATABASE.String, nullable = True)
     def __repr__(self) -> str:
         return f"user : {self.login}"
     

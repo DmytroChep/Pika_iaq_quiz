@@ -18,24 +18,17 @@
 
         <div class="nameBurger">
             <p class="LogoText">Pikaiq</p>
-            <div class="rightMenu">
-                <div class="nameUsername">
-                    {% if current_user.is_authenticated %}
-                    
-                        <p class="username">{{ current_user.login }}</p>
-                    
-                    {% else %}
-
-                        <p class="username">Name</p>
-                        <p class="username">Second name</p>
-                    {% endif %}
-                </div>
-                <div class="burgerMenu">
-                    
-                    <img src="{{ url_for('core.static', filename= 'images/burger/burger.png') }}">
-                </div>
+            
+        </div>
+        <a href="/profile">
+        <div class="rightMenu">
+            <div class="nameUsername">
+                {% if current_user.is_authenticated %}                   
+                    <p class="username">{{ current_user.login }}</p>
+                {% endif %}
             </div>
         </div>
+        </a>
 
     </header>
 
