@@ -1,45 +1,56 @@
 {% extends "base.html" %}
 
 {% block title %}Profile{% endblock %}
-{% block link %}<link rel="stylesheet" href="{{url_for('user_profile.static', filename= 'css/profile.css')}}">{% endblock %}
+{% block link %}<link rel="stylesheet" href="{{url_for('user_profile.static', filename= 'css/profile.css')}}">
+<script src="{{url_for('user_profile.static', filename= 'js/script.js')}}" defer></script>
+{% endblock %}
 
 
-
+<var></var>
 {% block content %} 
 <header>
         
-        <img src="{{ url_for('core.static', filename= 'images/logo/logo.png') }}">
+        <img src="{{ url_for('core.static', filename= 'images/logo/logo.png') }}" class="main_icon">
 
 
-        <div class="nameBurger">
-            <p class="LogoText">Pikaiq</p>
-            <div class="rightMenu">
-                <div class="nameUsername">
-                    {% if current_user.is_authenticated %}
-                    
-                        <p class="username">{{ current_user.login }}</p>
-                    
-                    {% else %}
 
-                        <p class="username">Name</p>
-                        <p class="username">Second name</p>
-                    {% endif %}
-                </div>
-                <div class="burgerMenu">
-                    
-                    <img src="{{ url_for('core.static', filename= 'images/burger/burger.png') }}">
-                </div>
-            </div>
+        <p class="LogoText">Pikaiq</p>
+        <div class="nameUsername">
+
+            {% if current_user.is_authenticated %}
+                <img src="{{avatar_filepath}}" class = "user_avatar">
+                
+                <p class="username">{{ current_user.login }}</p>
+            
+            {% else %}
+
+                <p class="username">Name</p>
+                <p class="username">Second name</p>
+            {% endif %}
         </div>
+ 
 
 </header>
 
 <main> 
-    <form method = "post" enctype="multipart/form-data">
-        <p>Username:<input type="text" name = "username" required placeholder="{{current_user.login}}" value="{{current_user.login}}"></p>
-        <p>Gmail:<input type="email" name = "gmail" required placeholder="{{current_user.email}}" value="{{current_user.email}}"></p>
-        <p>password:<input type="password" required name = "password" placeholder="{{current_user.password}}" value="{{current_user.password}}"></p>
-        <button>submit</button>
+    <form method = "post" enctype="multipart/form-data" class="form_change_data">
+        <div class = "first_div">
+            <p class = "field name_field"><img src="{{avatar_filepath}}" class = "user_avatar"><input type="file" accept="img/*" id = "avatar" name = "avatar" class = "avatar-input"><input type="text" name = "username" required placeholder="@{{current_user.login}}" value="{{current_user.login}}"></p>
+            <div class = "buttons">
+                <button type = "submit" class = "change_name">Change name</button>
+                <label for="avatar" class = "change_avatar_btn">Change avatar</label>  
+            </div>
+        </div>
+        <div class = "second_div">
+            <div class = "inputsDiv">
+                <p class = "field"><input type="email" name = "gmail" class = "secondInput" required placeholder="{{current_user.email}}" value="{{current_user.email}}"></p>
+                <p class = "field"><input type="password" required name = "password" class = "secondInput" placeholder="{{current_user.password}}" value="{{current_user.password}}"></p> 
+            </div>
+            <div class = "buttons">
+                <button type = "submit" class = "Secondsubmit">Submit</button> 
+            </div>
+        </div>
+        
     </form>
 </main>
 {% endblock %}

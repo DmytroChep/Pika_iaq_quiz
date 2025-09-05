@@ -1,34 +1,12 @@
-const filter_all = document.getElementById("all")
-const filter_recently = document.getElementById("recently")
-const filter_madeByYou = document.getElementById("madeByYou")
-const filter_favourite = document.getElementById("favourite")
+const backTomain = document.querySelector(".main_icon")
+const save_avatar = document.querySelector("#avatar")
 
 
-
-filter_all.addEventListener("click", () => {
-    filter_all.style.backgroundColor = "#F5D23B"
-    filter_recently.style.backgroundColor = "white"
-    filter_madeByYou.style.backgroundColor = "white"
-    filter_favourite.style.backgroundColor = "white"
+backTomain.addEventListener("click", () => {
+    window.location.href = "/"
 })
 
-filter_recently.addEventListener("click", () => {
-    filter_all.style.backgroundColor = "white"
-    filter_recently.style.backgroundColor = "#F5D23B"
-    filter_madeByYou.style.backgroundColor = "white"
-    filter_favourite.style.backgroundColor = "white"
-})
-
-filter_madeByYou.addEventListener("click", () => {
-    filter_all.style.backgroundColor = "white"
-    filter_recently.style.backgroundColor = "white"
-    filter_madeByYou.style.backgroundColor = "#F5D23B"
-    filter_favourite.style.backgroundColor = "white"
-})
-
-filter_favourite.addEventListener("click", () => {
-    filter_all.style.backgroundColor = "white"
-    filter_recently.style.backgroundColor = "white"
-    filter_madeByYou.style.backgroundColor = "white"
-    filter_favourite.style.backgroundColor = "#F5D23B"
+save_avatar.addEventListener("change", function(event){
+    const selectedFiles = event.target.files;
+    document.querySelectorAll(".user_avatar")[1].src = URL.createObjectURL(selectedFiles[0])   
 })

@@ -6,7 +6,7 @@
     
 {% block link %}  
 <link rel="stylesheet" href="{{ url_for('core.static', filename='css/styles.css') }}" >
-<script src="script.js" defer></script>
+<script src="{{ url_for('core.static', filename='js/script.js') }}"  defer></script>
 {% endblock %}
 
 {% block content %}
@@ -16,21 +16,24 @@
         <img src="{{ url_for('core.static', filename= 'images/logo/logo.png') }}">
 
 
-        <div class="nameBurger">
-            <p class="LogoText">Pikaiq</p>
-            
-        </div>
-        <a href="/profile">
-        <div class="rightMenu">
-            <div class="nameUsername">
-                {% if current_user.is_authenticated %}                   
-                    <p class="username">{{ current_user.login }}</p>
-                {% endif %}
-            </div>
-        </div>
-        </a>
 
-    </header>
+        <p class="LogoText">Pikaiq</p>
+        <div class="nameUsername">
+
+            {% if current_user.is_authenticated %}
+                <img src="{{avatar_filepath}}" class = "user_avatar">
+                
+                <p class="username">{{ current_user.login }}</p>
+            
+            {% else %}
+
+                <p class="username">Name</p>
+                <p class="username">Second name</p>
+            {% endif %}
+        </div>
+ 
+
+</header>
 
     <main>
         <div class="findBlock">
