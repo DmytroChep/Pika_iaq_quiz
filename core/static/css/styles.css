@@ -77,7 +77,6 @@ header .LogoText {
 }
 
 
-
 header .nameUsername { 
     background-color: white;
     border-radius: 11px;
@@ -108,7 +107,7 @@ header .nameUsername p {
 
 header .nameUsername p {
     width: 100px;
-    font-size: 17px;
+    font-size: 20px;
 }
 
 header .nameBurger .burgerMenu {
@@ -271,4 +270,8 @@ main .test p {
     width: 100%;
     text-align: end;
     padding-right: 8px;
+}
+
+body{
+    background-image: url("/core/static/images/bg.png");
 }

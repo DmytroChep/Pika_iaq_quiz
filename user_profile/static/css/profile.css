@@ -213,3 +213,7 @@ header .nameUsername p {
     align-items: center;
     /* justify-content: center; */
 }
+
+body{
+    background-image: url("/core/static/images/bg.png");
+}
