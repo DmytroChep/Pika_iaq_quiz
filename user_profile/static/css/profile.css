@@ -10,7 +10,9 @@
     src: url(fonts/Jost.ttf);
 }
 
-
+button, label{
+    cursor: pointer;
+}
 
 
 body{
@@ -216,4 +218,21 @@ header .nameUsername p {
 
 body{
     background-image: url("/core/static/images/bg.png");
+}
+
+.logoutBtnDiv{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logoutBtn{
+    width: 250px;
+    height: 50px;
+    background-color: #5AB9EA;
+    border-radius: 1234px;
+    border: 0;
+    font-size: 20px;
+    color: white;
 }

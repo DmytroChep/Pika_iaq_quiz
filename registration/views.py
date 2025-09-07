@@ -59,3 +59,10 @@ def render_login():
         return flask.render_template("login.html")
     
     return flask.render_template(template_name_or_list= "login.html")
+
+
+def render_logout():
+    if flask_login.current_user:
+        flask_login.logout_user()
+        return flask.redirect("/login")
+    return flask.redirect("/profile")
