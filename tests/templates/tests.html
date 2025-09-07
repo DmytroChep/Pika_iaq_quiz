@@ -5,56 +5,92 @@
 <link rel="stylesheet" href="{{url_for('tests.static', filename= 'css/tests.css')}}">
 {% endblock link %}
 {% block content %}
-<div class="header">
 
-    <div class="quiz-name">
-        <span>Quiz name</span>
-    </div>
+    <header>
+        
+        <img src="{{ url_for('core.static', filename= 'images/logo/logo.png') }}">
 
-    <div class="search">
-        <img src="{{url_for('tests.static', filename= 'images/search.svg')}}" alt="loupe">
-        <input type="text" placeholder="search for a template for a question">
-    </div>
 
-    <div class="left-quiz">
-        <div><a href="/"><img src="{{url_for('tests.static', filename= 'images/logout.svg')}}" alt="left quiz"></a></div>
-    </div>
+        <div class="nameBurger">
+            <p class="LogoText">Pikaiq</p>
+            <div class="rightMenu">
+                <div class="nameUsername">
+                    {% if current_user.is_authenticated %}
+                    
+                        <p class="username">{{ current_user.login }}</p>
+                    
+                    {% else %}
 
-</div>
-</div>
-<div class="test-settings">
-    <div>
-        <input type="text" placeholder="test name" maxlength="20" minlength="3">
-    </div>
-    <div>
-        <input type="text" placeholder="test description">
-    </div>
-</div>
-<div class="add">
-    <button id="add-question" type="button">Add question</button>
-    <button type="button" onclick="document.getElementById('file').click()"><img src="{{url_for('tests.static', filename= 'images/add_image.svg')}}" alt="add-image"></button>
-    <input type="file" accept="image/*" id = "file" style="display: none;">
-</div>
-<div class="questions-holder">
-    <div class="question-background">
-        <div class="question">
-            <span>Тест</span>
+                        <p class="username">Name</p>
+                        <p class="username">Second name</p>
+                    {% endif %}
+                </div>
+                <div class="burgerMenu">
+                    
+                    <img src="{{ url_for('core.static', filename= 'images/burger/burger.png') }}">
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <div class="settings">
+        <div class="left">
+
+            <div id = "multiple-choice">
+                <a href="/"><button type ="button">🢐</button></a>
+                <img src="/tests/static/images/Frame 179.svg" alt="■">
+                <span>multiple choice</span>
+            </div>
+
+            <button type = "button" id="a""><img src="/tests/static/images/format_color_text.svg" alt=""></button>
+            <button type = "button" id="i"><img src="/tests/static/images/format_italic.svg" alt=""></button>
+            <button type = "button" id="u" type="button type = "button""><img src="/tests/static/images/format_underlined.svg" alt=""></button>
+        </div>
+
+        <div class="questions-numbers">
+            <button class="quest-number" onclick="changeQuest(1)">1</button>
+        </div>
+
+        <div class="right">
+            <button type="button" id="add-question" onclick="addQuestion()">Add question</button>
+            <a href="/"><button type = "button" id="left-quiz"><img src="/tests/static/images/logout.svg" alt=""></button></a>
         </div>
     </div>
-    <div class="question-background">
-        <div class="question">
-            <span>Тест</span>
-        </div>
-    </div>
-    <div class="question-background">
-        <div class="question">
-            <span>Тест</span>
-        </div>
-    </div>
+    <form id="quiz_1">
+        <div class="content">
+            <div class="main-content">
+                <div class="question">
+                    <button type = "button"><img src="/tests/static/images/add_image.svg" alt="" onclick="document.getElementById('file').click()"></button>
+                    <input type="text" placeholder="Enter text of a question" name="question_text" id = "question_text" >
+                    <span id="number-quest">question 1</span>
+                </div>
+    
+                <div class="necessary">
+                    <div class="answer">
+                        <input type="checkbox" value="1" name = "correct_answer[]" id="checkbox">
+                        <button type = "button" onclick="document.getElementById('file').click()" id="add_button"><img src="/tests/static/images/add_image.svg" alt="■"></button>
+                        <input type="text" placeholder="Enter an answer" id="answer_input" name="answer[]">
+                    </div>
+                    <div class="answer">
+                        <input type="checkbox" value="2" name = "correct_answer[]" id="checkbox" class="correct_answer">
+                        <button type = "button" onclick="document.getElementById('file').click()"><img src="/tests/static/images/add_image.svg" alt="■"></button>
+                        <input type="text" placeholder="Enter an answer" name="answer[]">
+                    </div>
+                </div>
 
+                <div class="additional">
+                    <button id = "plus" type="button" onclick="addAnswer()">
+                            <span>+</span>
+                    </button>
+                </div>
+            </div>
+            <input type="file" accept="image/*" id="file" style="display: none;">
+            </div>
+            <!-- <button type="submit" id="save">Save question</button> -->
+        </div>
+    </form>
 
-</div>
-<div class="text-holder">
-    <span>3 questions</span>
-</div>
+    <script src="/tests/static/js/tests.js"></script>
 {% endblock content %}
+
