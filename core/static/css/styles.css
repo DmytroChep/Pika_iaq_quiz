@@ -227,14 +227,18 @@ main .geography {
     font-size: 24px;
     margin-top: 17px;
 }
-
+.testsPosition{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
 main .listTests {
+    width: 75vw;
     display: flex;
     flex-wrap: wrap;
+    padding-left: 15px;
+    padding-top: 15px;
     gap: 35px;
-    width: 100%;
-    padding-left: 20px;
-    padding-right: 63px;
 }
 
 main .test {
@@ -243,12 +247,13 @@ main .test {
     padding-top: 8px;
     border: 1px solid #919191;
     border-radius: 15px;
-    margin-top: 12px;
+    /* margin-top: 12px; */
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: center;
     box-sizing: border-box;
+    background-color: white;
 }
 
 
@@ -270,7 +275,10 @@ main .test p {
     width: 100%;
     text-align: end;
     padding-right: 8px;
+    margin: 1px;
 }
+
+
 
 body{
     background-image: url("/core/static/images/bg.png");

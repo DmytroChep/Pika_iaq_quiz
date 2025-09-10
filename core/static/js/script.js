@@ -3,20 +3,17 @@ const filter_recently = document.getElementById("recently")
 const filter_madeByYou = document.getElementById("madeByYou")
 const filter_favourite = document.getElementById("favourite")
 const nameUsernameRedirect = document.querySelector(".nameUsername")
-
+const newButtonRedirect = document.querySelector(".newButton")
 
 
 nameUsernameRedirect.addEventListener("click", () => {
     location.href = "/profile"
 })
 
-
-filter_all.addEventListener("click", () => {
-    filter_all.style.backgroundColor = "#5AB9EA"
-    filter_recently.style.backgroundColor = "white"
-    filter_madeByYou.style.backgroundColor = "white"
-    filter_favourite.style.backgroundColor = "white"
+newButtonRedirect.addEventListener("click", ()=> {
+    window.location.href = "/tests"
 })
+
 
 filter_recently.addEventListener("click", () => {
     filter_all.style.backgroundColor = "white"

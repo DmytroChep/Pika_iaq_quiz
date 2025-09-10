@@ -24,13 +24,3 @@ def render_user_profile():
         return flask.redirect("/registration")
 
 
-def save_user_photo():
-    user = flask_login.current_user
-    if flask.request.method == "POST":
-        if 'avatar' in flask.request.files and flask.request.files["avatar"]:
-            load_avatar = flask.request.files["avatar"]
-            filename = secure_filename(load_avatar.filename)
-            load_avatar.save(os.path.abspath(os.path.join("user_profile","static","user_avatars", filename)))
-            user.avatar = filename
-            return {"status" : "success", "avatar_filepath":os.path.abspath(os.path.join("user_profile","static","user_avatars", filename))}
-    return {"status": "error"}

@@ -1,7 +1,7 @@
-let PlusButton = document.getElementById('plus');
+let PlusButton = document.querySelector('#plus')
 const Additional = document.getElementsByClassName("additional")[0];
 const QuestionsNumbers = document.getElementsByClassName("questions-numbers")[0];
-let count = 3;
+let count = 2;
 let questCount = 1;
 let QuestionsAll = [];
 let form = document.getElementById('quiz_1');
@@ -10,56 +10,59 @@ const quest_text= document.getElementById("question_text");
 const answers_text= document.getElementsByClassName('answer');
 const cor_answers = document.getElementsByClassName('correct_answer');
 
+const addImageInputs = document.querySelectorAll(".addImageInput")
+const questionImageInput = document.querySelector(".addImageInputQuestion")
+
+addImageInputs.forEach((element) => {
+    element.addEventListener("change", function(event){
+        let answerCount = element.id[element.id.length - 1] 
+        const ImageCheck = document.querySelector(`#answerImage${answerCount}`)
+        const selectedFiles = event.target.files;
+        const urlImageObj = URL.createObjectURL(selectedFiles[0])
+
+        if (!ImageCheck){          
+            let imageDom = document.createElement("img")
+            imageDom.src = urlImageObj
+            imageDom.classList.add("AnswerImage")
+            imageDom.id = `answerImage${answerCount}`
+            document.querySelector(`#answer${answerCount}`).appendChild(imageDom)
+        } else{
+            ImageCheck.src = urlImageObj
+        }
+    })
+})
+questionImageInput.addEventListener("change", function(event){
+        let answerCount = questionImageInput.id[questionImageInput.id.length - 1] 
+        const ImageCheck = document.querySelector(`#answerImage${answerCount}`)
+        const selectedFiles = event.target.files;
+        const urlImageObj = URL.createObjectURL(selectedFiles[0])
+
+        if (!ImageCheck){          
+            let imageDom = document.createElement("img")
+            imageDom.src = urlImageObj
+            imageDom.classList.add("questionImg")
+            imageDom.id = `answerImageQuestion`
+            document.querySelector(`.question`).appendChild(imageDom)
+        } else{
+            ImageCheck.src = urlImageObj
+        }
+    })
 
 
 function addAnswer(){
-    if (count == 4){
-        PlusButton.remove()
-    }
-        let newAnswer = document.createElement('div')
-        newAnswer.className = "answer";
-        newAnswer.id = `answer${String(count)}`;
-
-
-        let input = document.createElement('input');
-        input.type = 'checkbox';
-        input.value = count;
-        input.name = 'correct_answer[]';
-        input.id = 'checkbox';
-        
-        let answerInput = document.createElement('input');
-        answerInput.type = "text";
-        answerInput.placeholder = "Enter an answer";
-        answerInput.name = 'answer[]';
-        
-        let addButton = document.createElement('button');
-        addButton.type = 'button';
-        addButton.id = 'addit_button';
-        addButton.onclick = () => document.getElementById('file').click();
-        let image = document.createElement('img');
-        image.src = '/tests/static/images/add_image.svg';
-        addButton.appendChild(image)
-        addButton.id = 'deleteButton';
-        
-        let deleteButton = document.createElement("button");
-        deleteButton.type = 'button';
-        deleteButton.onclick = ()=> deleteAnswer(newAnswer.id);
-        let delImage = document.createElement('img');
-        delImage.src = "/tests/static/images/bin.svg";
-        delImage.id = 'delImage';
-        deleteButton.appendChild(delImage);
-        
-        let top = document.createElement("div");
-        top.id = 'top';
-        top.appendChild(input);
-        top.appendChild(deleteButton);
-
-        newAnswer.appendChild(top);
-        newAnswer.appendChild(addButton);
-        newAnswer.appendChild(answerInput);
-        
+    Additional.innerHTML += `<div class="answer" id="answer${count}">
+    <input type="checkbox" value="${count}" name = "correct_answer[]" id="checkbox" class="correct_answer">
+    <input type="file" class="addImageInput" id="inputImage${count}">
+                        <label for="inputImage${count}" class = "addImageBtn"><img src="/tests/static/images/add_image.svg" alt="■" class = "addImageLogo"></label>
+                        <input type="text" placeholder="Enter an answer" id="answer_input" name="answer[]">
+                    </div>`
+        console.log(count)
         count++;
-        Additional.appendChild(newAnswer);
+    if (count == 4){
+        PlusButton.style.display = "none"
+        alert(PlusButton)
+    }
+    
 }
 
 function deleteAnswer(id){

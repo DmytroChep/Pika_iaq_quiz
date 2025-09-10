@@ -8,31 +8,27 @@
 
     <header>
         
-        <img src="{{ url_for('core.static', filename= 'images/logo/logo.png') }}">
+        <img src="{{ url_for('core.static', filename= 'images/logo/logo.png') }}" class="main_icon">
 
 
-        <div class="nameBurger">
-            <p class="LogoText">Pikaiq</p>
-            <div class="rightMenu">
-                <div class="nameUsername">
-                    {% if current_user.is_authenticated %}
-                    
-                        <p class="username">{{ current_user.login }}</p>
-                    
-                    {% else %}
 
-                        <p class="username">Name</p>
-                        <p class="username">Second name</p>
-                    {% endif %}
-                </div>
-                <div class="burgerMenu">
-                    
-                    <img src="{{ url_for('core.static', filename= 'images/burger/burger.png') }}">
-                </div>
-            </div>
+        <p class="LogoText">Pikaiq</p>
+        <div class="nameUsername">
+
+            {% if current_user.is_authenticated %}
+                <img src="{{avatar_filepath}}" class = "user_avatar">
+                
+                <p class="username">{{ current_user.login }}</p>
+            
+            {% else %}
+
+                <p class="username">Name</p>
+                <p class="username">Second name</p>
+            {% endif %}
         </div>
+ 
 
-    </header>
+</header>
 
     <div class="settings">
         <div class="left">
@@ -43,9 +39,9 @@
                 <span>multiple choice</span>
             </div>
 
-            <button type = "button" id="a""><img src="/tests/static/images/format_color_text.svg" alt=""></button>
+            <button type = "button" id="a"><img src="/tests/static/images/format_color_text.svg" alt=""></button>
             <button type = "button" id="i"><img src="/tests/static/images/format_italic.svg" alt=""></button>
-            <button type = "button" id="u" type="button type = "button""><img src="/tests/static/images/format_underlined.svg" alt=""></button>
+            <button type = "button" id="u" type="button"><img src="/tests/static/images/format_underlined.svg" alt=""></button>
         </div>
 
         <div class="questions-numbers">
@@ -61,20 +57,25 @@
         <div class="content">
             <div class="main-content">
                 <div class="question">
-                    <button type = "button"><img src="/tests/static/images/add_image.svg" alt="" onclick="document.getElementById('file').click()"></button>
+                    <input type="file" class="addImageInputQuestion" id="inputImageQuestion">
+                    <label for="inputImageQuestion" class = "addImageBtnQuestion"><img src="/tests/static/images/add_image.svg" alt="■" class = "addImageLogo"></label>
+
                     <input type="text" placeholder="Enter text of a question" name="question_text" id = "question_text" >
                     <span id="number-quest">question 1</span>
                 </div>
     
                 <div class="necessary">
-                    <div class="answer">
-                        <input type="checkbox" value="1" name = "correct_answer[]" id="checkbox">
-                        <button type = "button" onclick="document.getElementById('file').click()" id="add_button"><img src="/tests/static/images/add_image.svg" alt="■"></button>
+                    <div class="answer" id="answer1">
+                        <input type="checkbox" value="1" name = "correct_answer[]" id="checkbox" class="correct_answer">
+                        <input type="file" class="addImageInput" id="inputImage1">
+                        <label for="inputImage1" class = "addImageBtn"><img src="/tests/static/images/add_image.svg" alt="■" class = "addImageLogo"></label>
                         <input type="text" placeholder="Enter an answer" id="answer_input" name="answer[]">
                     </div>
-                    <div class="answer">
+                    <div class="answer" id="answer2">
+                        <input type="file" class="addImageInput" id="inputImage2">
                         <input type="checkbox" value="2" name = "correct_answer[]" id="checkbox" class="correct_answer">
-                        <button type = "button" onclick="document.getElementById('file').click()"><img src="/tests/static/images/add_image.svg" alt="■"></button>
+                        <!-- <button type = "button" class = "addImageBtn"><img src="/tests/static/images/add_image.svg" alt="■" class = "addImageLogo"></button> -->
+                        <label for="inputImage2" class = "addImageBtn"><img src="/tests/static/images/add_image.svg" alt="■" class = "addImageLogo"></label>
                         <input type="text" placeholder="Enter an answer" name="answer[]">
                     </div>
                 </div>
@@ -87,7 +88,6 @@
             </div>
             <input type="file" accept="image/*" id="file" style="display: none;">
             </div>
-            <!-- <button type="submit" id="save">Save question</button> -->
         </div>
     </form>
 
