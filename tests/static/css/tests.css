@@ -296,17 +296,6 @@ header .nameBurger .rightMenu {
     background-color: #0d8b42;
 }
 
-#i, #a, #u{
-    width: 3.5vh;
-    height: 3.5vh;
-    margin: 0vh 0.5vw 0vh 0.5vw;
-    border-radius: 1vh;
-}
-
-#i:hover, #a:hover, #u:hover{
-    background-color: #ced7df;
-} 
-
 #multiple-choice{
     overflow: hidden;
     display: flex;
@@ -335,6 +324,10 @@ header .nameBurger .rightMenu {
     background-color: #096ab9;
 }
 
+#multiple-choice span{
+    margin-left: 0.6vw;
+}
+
 #checkbox, .answer img{
     height: 2.5vh;
     width: 2.5vh;
@@ -352,15 +345,3 @@ header .nameBurger .rightMenu {
     justify-content: space-between;
     width: 38vw;
 }
-/* 
-#save{
-    width: 16vw;
-    height: 6vh;
-    border: 0.2vh solid black;
-    color: black;
-    background-color: #5AB9EA;
-    font-size: 3.5vh;
-    border-radius: 2vh;
-    margin-top: 1.5vh;
-    margin-left: 80vw;
-} */

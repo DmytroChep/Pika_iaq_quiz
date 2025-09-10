@@ -3,32 +3,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('registration.static', filename='css/registration.css') }}" >
-    <title>PikaIQ | Реєстрація </title>
+    <title>PikaIQ | Registration</title>
     <style>
     
     </style>
 </head>
 <body>
-    <div class="header"><span>PikalQ</span></div>
+
+    <div class="header">
+        <img src="/registration/static/images/PIkaIQLogo.svg">
+        <span>PikaIQ</span>
+    </div>
      <form method="POST">
         <div class="form-container">
-            <label for="username">Nickname</label>
-            <input type="text" id="username" name="username" placeholder="Enter your nickname" required>
-
-            <label for="email">Email</label>
+            <div class="avatar">
+                <input type="text" id="avatar" name="avatar" placeholder="Add your avatar">
+                <button type="button" onclick="document.getElementById('file').click()"><img src="/registration/static/images/add_a_photo.svg" alt=""></button>
+            </div>
+            <input type="text" id="username" name="username" placeholder="Enter your nickname"required>
             <input type="email" id="email" name="email" placeholder="Enter your email" required>
-
-            <label for="password">Password</label>
             <input type="password" id="password" name="password" placeholder="Enter your password" required>
-
-            <label for="Confirm_password">Confirm Password</label>
             <input type="password" id="Confirm_password" name="confirm_password" placeholder="Confirm your password" required>
         </div>
 
-        <div class="container">
-            <button type="submit">Sign Up</button>
-        </div>
+        <button type="submit" class="container">Sign Up</button>
     </form>
-
+    <input type="file" accept="image/*" id="file" style="display: none;">
+    <div id="text">
+        <span >Already have an account?</span> <a id= "log-in"href="/login">Log in</a>
+    </div>
 </body>
 </html>
