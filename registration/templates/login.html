@@ -3,29 +3,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('registration.static', filename='css/registration.css') }}" >
-    <title>PikaIQ | Реєстрація </title>
+    <title>PikaIQ | Log In </title>
     <style>
     
     </style>
 </head>
 <body>
- <form method="POST">
-        <div class="form-container">
-            <label for="username">Nickname</label>
+     <div class="header">
+        <img src="/registration/static/images/PIkaIQLogo.svg">
+        <span>PikaIQ</span>
+    </div>
+    <form method="POST">
+        <div class="form-container2">
             <input type="text" id="username" name="username" placeholder="Enter your nickname" required>
-
-            
-
-            <label for="password">Password</label>
             <input type="password" id="password" name="password" placeholder="Enter your password" required>
-
-            
         </div>
-
-        <div class="container">
-            <button type="submit">Sign Up</button>
-        </div>
+        <button class="container" type="submit">Log in</button>
     </form>
-
+    <div id="text">
+        <span >Don't have an account?</span> <a id= "log-in"href="/registration">Sign up</a>
+    </div>
 </body>
 </html>

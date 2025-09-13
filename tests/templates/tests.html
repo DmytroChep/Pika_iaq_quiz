@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Tests Page{% endblock title %}
+{% block title %}PikaIQ | Test{% endblock title %}
 {% block link %}
 <link rel="stylesheet" href="{{url_for('tests.static', filename= 'css/tests.css')}}">
 {% endblock link %}
@@ -38,10 +38,6 @@
                 <img src="/tests/static/images/Frame 179.svg" alt="■">
                 <span>multiple choice</span>
             </div>
-
-            <button type = "button" id="a"><img src="/tests/static/images/format_color_text.svg" alt=""></button>
-            <button type = "button" id="i"><img src="/tests/static/images/format_italic.svg" alt=""></button>
-            <button type = "button" id="u" type="button"><img src="/tests/static/images/format_underlined.svg" alt=""></button>
         </div>
 
         <div class="questions-numbers">
@@ -50,11 +46,10 @@
 
         <div class="right">
             <button type="button" id="add-question" onclick="addQuestion()">Add question</button>
-            <a href="/"><button type = "button" id="left-quiz"><img src="/tests/static/images/logout.svg" alt=""></button></a>
         </div>
     </div>
     <form id="quiz_1">
-        <div class="content">
+        <div class="content content1">
             <div class="main-content">
                 <div class="question">
                     <input type="file" class="addImageInputQuestion" id="inputImageQuestion">
@@ -74,7 +69,6 @@
                     <div class="answer" id="answer2">
                         <input type="file" class="addImageInput" id="inputImage2">
                         <input type="checkbox" value="2" name = "correct_answer[]" id="checkbox" class="correct_answer">
-                        <!-- <button type = "button" class = "addImageBtn"><img src="/tests/static/images/add_image.svg" alt="■" class = "addImageLogo"></button> -->
                         <label for="inputImage2" class = "addImageBtn"><img src="/tests/static/images/add_image.svg" alt="■" class = "addImageLogo"></label>
                         <input type="text" placeholder="Enter an answer" name="answer[]">
                     </div>

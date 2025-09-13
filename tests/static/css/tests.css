@@ -256,7 +256,7 @@ button{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 79.7vw;
+    width: 100%;
     height: 17.2vh;
     background-color: #8D81A9;
     font-size: 5vh;
@@ -288,17 +288,6 @@ button{
 #add-question:hover{
     background-color: #0d8b42;
 }
-
-#i, #a, #u{
-    width: 3.5vh;
-    height: 3.5vh;
-    margin: 0vh 0.5vw 0vh 0.5vw;
-    border-radius: 1vh;
-}
-
-#i:hover, #a:hover, #u:hover{
-    background-color: #ced7df;
-} 
 
 #multiple-choice{
     overflow: hidden;
