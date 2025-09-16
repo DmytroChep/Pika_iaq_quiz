@@ -16,14 +16,14 @@
     </div>
      <form method="POST">
         <div class="form-container">
-            <div class="avatar">
-                <input type="text" id="avatar" name="avatar" placeholder="Add your avatar">
-                <button type="button" onclick="document.getElementById('file').click()"><img src="/registration/static/images/add_a_photo.svg" alt=""></button>
-            </div>
             <input type="text" id="username" name="username" placeholder="Enter your nickname"required>
             <input type="email" id="email" name="email" placeholder="Enter your email" required>
             <input type="password" id="password" name="password" placeholder="Enter your password" required>
             <input type="password" id="Confirm_password" name="confirm_password" placeholder="Confirm your password" required>
+            <div class="avatar">
+                <button type="button" onclick="document.getElementById('file').click()"><img src="/registration/static/images/add_a_photo.svg" alt=""></button>
+                <span>Add your avatar</span>
+            </div>
         </div>
 
         <button type="submit" class="container">Sign Up</button>
