@@ -11,14 +11,14 @@
 <body>
 
     <div class="header">
-        <img src="/registration/static/images/PIkaIQLogo.svg">
+        <img src="registration/static/images/PIkaIQLogo.svg">
         <span>PikaIQ</span>
     </div>
-     <form method="POST">
+     <form method="POST" enctype="multipart/form-data">
         <div class="form-container">
             <div class="avatar">
                 <input type="text" id="avatar" name="avatar" placeholder="Add your avatar">
-                <button type="button" onclick="document.getElementById('file').click()"><img src="/registration/static/images/add_a_photo.svg" alt=""></button>
+                <label class="button" for="file"><img src="registration/static/images/add_a_photo.svg" alt=""></label>
             </div>
             <input type="text" id="username" name="username" placeholder="Enter your nickname"required>
             <input type="email" id="email" name="email" placeholder="Enter your email" required>
@@ -27,10 +27,12 @@
         </div>
 
         <button type="submit" class="container">Sign Up</button>
+        <input type="file" accept="image/*" id="file" style="display: none;" name="avatar_image">
     </form>
-    <input type="file" accept="image/*" id="file" style="display: none;">
+
     <div id="text">
         <span >Already have an account?</span> <a id= "log-in"href="/login">Log in</a>
     </div>
+    <script src="{{ url_for('registration.static', filename = 'js/script.js') }}"></script>
 </body>
 </html>

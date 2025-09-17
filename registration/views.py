@@ -1,30 +1,30 @@
 import flask , flask_login 
 from .models import User
+from werkzeug.utils import secure_filename
 from Project.db import DATABASE
 from registration.settings_login import login
+import os
 
 def render_registration():
     if flask.request.method == 'POST':
         user = User(
-                   
                     login = flask.request.form['username'], 
                     password = flask.request.form["password"], 
                     email = flask.request.form["email"], 
-                    is_teacher = False
+                    is_teacher = False,
+                    avatar = secure_filename(flask.request.files["avatar_image"].filename)
                     )
-               
+        flask.request.files["avatar_image"].save(os.path.abspath(os.path.join("user_profile","static","user_avatars", secure_filename(flask.request.files["avatar_image"].filename))))
         try:
             DATABASE.session.add(user)
             DATABASE.session.commit()
-            
-               
-            
             
             return flask.redirect("/login")
         except Exception as e:
             print(f"Ошибка при добавлении пользователя в базу данных: {e}")
             return 'ERROR'
     return flask.render_template(template_name_or_list= "registration.html")
+    
 
 def render_authorization():
     
