@@ -37,7 +37,11 @@ input{
     height: 6.2vh;
     font-size: 2.4vh;
     text-align: left;
-    color: rgb(122, 122, 122);
+    color: black;
+    padding-left: 1.6vw;
+}
+input::placeholder{
+    color: #000000;
 }
 
 button {
@@ -45,6 +49,10 @@ button {
     transition: background-color 0.3s ease;
 }
 
+.avatar span{
+    margin-left: 1vw;;
+    font-size: 3vh;
+}
 
 .form-container {
     background-color: #5DE3E3;
@@ -104,10 +112,23 @@ button {
 
 .avatar{
     width: 34.1vw;
+    display: flex;
+    justify-content: start;
+    align-items: center;
 }
 
-.avatar input{
-    width: 29.2vw;
+.avatar button{
+    width: 4vw;
+    height: 6.4vh;
+    border-radius: 1vh;
+    border: none;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    padding-right: 0.5vw;
+}
+.avatar button:hover{
+    background-color: #cfcfcf;
 }
 
 #text{
