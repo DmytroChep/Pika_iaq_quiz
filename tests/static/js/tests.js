@@ -9,7 +9,77 @@ const quest_text= document.getElementById("question_text");
 const answers_text= document.getElementsByClassName('answer');
 const cor_answers = document.getElementsByClassName('correct_answer');
 const formDom = document.querySelector("#quiz_1")
+const modalQuizName = document.querySelector(".modalBg")
+const modalQuizName2 = document.querySelector(".modalBg2")
+const QuizNameBtn = document.querySelector(".buttonSubmit")
+const QuizNameInput = document.querySelector(".quizName")
 
+QuizNameBtn.addEventListener("click", () => {
+    if (QuizNameInput.value != ""){
+        modalQuizName.style.display = "none"
+        modalQuizName2.style.display = "none"
+    }
+})
+
+
+
+document.querySelector(".returnToMain").addEventListener("click", () => {
+    let countQuestion = 1;
+    const allQuestions = document.querySelectorAll(".content");
+    
+    const formData = new FormData();
+    
+    formData.append('quiz_name', QuizNameInput.value);
+    
+    const fileInput = document.querySelector(".quizImage");
+    if (fileInput.files && fileInput.files.length > 0) {
+        formData.append('quiz_avatar', fileInput.files[0]);
+    }
+    
+    const questions = {};
+    
+    allQuestions.forEach(element => {
+        let stringyfiedCount = `${countQuestion}`;
+        questions[stringyfiedCount] = {
+            questionTitle: document.querySelector(`.content${stringyfiedCount} .main-content .question #question_text`).value,
+            answer1: {
+                title: document.querySelector(`.content${stringyfiedCount} .main-content .necessary #answer1 #answer_input`).value
+            },
+            answer2: {
+                title: document.querySelector(`.content${stringyfiedCount} .main-content .necessary #answer2 #answer_input`).value
+            },
+            answer3: {},
+            answer4: {}
+        };
+        
+        const additionalAnswers = document.querySelectorAll(`.content${stringyfiedCount} .main-content .additional .answer`);
+        if (additionalAnswers.length !== 0) {
+            const answer3Input = document.querySelector(`.content${stringyfiedCount} .main-content .additional #answer3 #answer_input`);
+            const answer4Input = document.querySelector(`.content${stringyfiedCount} .main-content .additional #answer4 #answer_input`);
+            
+            if (answer3Input) questions[stringyfiedCount].answer3.title = answer3Input.value;
+            if (answer4Input) questions[stringyfiedCount].answer4.title = answer4Input.value;
+        }
+        
+        countQuestion++;
+    });
+    
+    formData.append('questions', JSON.stringify(questions));
+    
+    $.ajax({
+        url: '/save_test',
+        type: 'POST',
+        data: formData,
+        processData: false, 
+        contentType: false, 
+        success: function(response) {
+            location.href = "/";
+        },
+        error: function(xhr, status, error) {
+            console.error('Error:', error);
+        }
+    });
+});
 
 function getLocalCount(){
     let count = document.querySelectorAll(`.content${questCount} .main-content .additional .answer`).length + 2
@@ -124,6 +194,7 @@ function addAnswer(){
     answerInput.type = "text";
     answerInput.placeholder = "Enter an answer";
     answerInput.name = 'answer[]';
+    answerInput.id = "answer_input"
         
     let addButton = document.createElement('label');
     addButton.setAttribute("for", `inputImage${count}`)
@@ -284,6 +355,7 @@ function addQuestion(){
         answerInput1.type = 'text';
         answerInput1.placeholder = 'Enter an answer';
         answerInput1.name = 'answer[]';
+        answerInput1.id = "answer_input"
         
         answer1.appendChild(checkbox1);
         answer1.appendChild(fileInput1);
@@ -321,6 +393,7 @@ function addQuestion(){
         answerInput2.type = 'text';
         answerInput2.placeholder = 'Enter an answer';
         answerInput2.name = 'answer[]';
+        answerInput2.id = "answer_input"
         
         answer2.appendChild(fileInput2);
         answer2.appendChild(checkbox2);

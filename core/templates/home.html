@@ -48,39 +48,28 @@
             <button class="newButton">+Create new test</button>
         </div>
         <div class="filters">
-            <button id="recently" class="filter">Recently viewed</button>
+            <button id="all" class="filter">All</button>
             <button id="madeByYou" class="filter">Made by tou</button>
-            <button id="favourite" class="filter">Favourite</button>
         </div>
         <div  class = "testsPosition">
-            <div class="listTests">
-                <div class="test">
-                    <img src="{{ url_for('core.static', filename= 'images/globus/globus.png') }}">
-                    
-                    <p class="testName">Geography test 8</p>
-                    <p class = "date">created: 01.04.25</p>
+            <div class="listTests" id = "allTests">
+                {% for test in all_tests %}
+                    <div class="test">
+                    <img src="tests/static/quiz_avatars/{{test.photo}}">
+                    <p class="testName">{{ test.name }}</p>
+                    <p>created: {{ test.date_creation }}</p>
                 </div>
-                <div class="test">
-                    <img src="{{ url_for('core.static', filename= 'images/globus/globus.png') }}">
-                    <p class="testName">Geography test 8</p>
-                    <p>created: 01.04.25</p>
+                {% endfor %}
+            </div>
+
+            <div class="listTests" id = "userTests">
+                {% for test in tests_from_user %}
+                    <div class="test">
+                    <img src="tests/static/quiz_avatars/{{test.photo}}">
+                    <p class="testName">{{ test.name }}</p>
+                    <p>created: {{ test.date_creation }}</p>
                 </div>
-                <div class="test">
-                    <img src="{{ url_for('core.static', filename= 'images/globus/globus.png') }}">
-                    <p class="testName">Geography test 8</p>
-                    <p>created: 01.04.25</p>
-                </div>
-                <div class="test">
-                    <img src="{{ url_for('core.static', filename= 'images/globus/globus.png') }}">
-                    <p class="testName">Geography test 8</p>
-                    <p>created: 01.04.25</p>
-                </div>
-                <div class="test">
-                    <img src="{{ url_for('core.static', filename= 'images/globus/globus.png') }}">
-                    <p class="testName">Geography test 8</p>
-                    <p>created: 01.04.25</p>
-                </div>
-    
+                {% endfor %}
             </div>
         </div>
     </main>

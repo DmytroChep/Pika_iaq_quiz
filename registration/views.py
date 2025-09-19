@@ -17,9 +17,6 @@ def render_registration():
             DATABASE.session.add(user)
             DATABASE.session.commit()
             
-               
-            
-            
             return flask.redirect("/login")
         except Exception as e:
             print(f"Ошибка при добавлении пользователя в базу данных: {e}")
@@ -58,7 +55,7 @@ def render_login():
 
         return flask.render_template("login.html")
     
-    return flask.render_template(template_name_or_list= "login.html")
+    return flask.render_template(template_name_or_list= "login.html")   
 
 
 def render_logout():

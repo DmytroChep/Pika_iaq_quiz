@@ -1,7 +1,7 @@
 const filter_all = document.getElementById("all")
-const filter_recently = document.getElementById("recently")
+const allTestsDiv = document.getElementById("allTests")
 const filter_madeByYou = document.getElementById("madeByYou")
-const filter_favourite = document.getElementById("favourite")
+const userTestsDiv = document.getElementById("userTests")
 const nameUsernameRedirect = document.querySelector(".nameUsername")
 const newButtonRedirect = document.querySelector(".newButton")
 
@@ -11,27 +11,20 @@ nameUsernameRedirect.addEventListener("click", () => {
 })
 
 newButtonRedirect.addEventListener("click", ()=> {
-    window.location.href = "/tests"
+    window.location.href = `/test_creation/`
 })
 
 
-filter_recently.addEventListener("click", () => {
-    filter_all.style.backgroundColor = "white"
-    filter_recently.style.backgroundColor = "#5AB9EA"
+filter_all.addEventListener("click", () => {
+    filter_all.style.backgroundColor = "#5AB9EA"
+    allTestsDiv.style.display = "flex"
     filter_madeByYou.style.backgroundColor = "white"
-    filter_favourite.style.backgroundColor = "white"
+    userTestsDiv.style.display = "none"
 })
 
 filter_madeByYou.addEventListener("click", () => {
     filter_all.style.backgroundColor = "white"
-    filter_recently.style.backgroundColor = "white"
+    allTestsDiv.style.display = "none"
     filter_madeByYou.style.backgroundColor = "#5AB9EA"
-    filter_favourite.style.backgroundColor = "white"
-})
-
-filter_favourite.addEventListener("click", () => {
-    filter_all.style.backgroundColor = "white"
-    filter_recently.style.backgroundColor = "white"
-    filter_madeByYou.style.backgroundColor = "white"
-    filter_favourite.style.backgroundColor = "#5AB9EA"
+    userTestsDiv.style.display = "flex"
 })

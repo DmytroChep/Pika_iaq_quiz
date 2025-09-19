@@ -240,6 +240,12 @@ main .listTests {
     padding-top: 15px;
     gap: 35px;
 }
+#all{
+    background-color: #5AB9EA;
+}
+#userTests{
+    display: none;
+}
 
 main .test {
     width: 197px;

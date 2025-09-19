@@ -34,14 +34,13 @@
         <div class="left">
 
             <div id = "multiple-choice">
-                <a href="/"><button type ="button">🢐</button></a>
-                <img src="/tests/static/images/Frame 179.svg" alt="■">
-                <span>multiple choice</span>
+                <button type ="button" class = "returnToMain">🢐</button>
+                
             </div>
         </div>
 
         <div class="questions-numbers">
-            <button class="quest-number" onclick="changeQuest(1)">1</button>
+            <button class="quest-number">1</button>
         </div>
 
         <div class="right">
@@ -70,7 +69,7 @@
                         <input type="file" class="addImageInput" id="inputImage2">
                         <input type="checkbox" value="2" name = "correct_answer[]" id="checkbox" class="correct_answer">
                         <label for="inputImage2" class = "addImageBtn"><img src="/tests/static/images/add_image.svg" alt="■" class = "addImageLogo"></label>
-                        <input type="text" placeholder="Enter an answer" name="answer[]">
+                        <input type="text" placeholder="Enter an answer" id="answer_input" name="answer[]">
                     </div>
                 </div>
 
@@ -84,7 +83,19 @@
             </div>
         </div>
     </form>
+    <div class = "modalBg">
+        
+    </div>
 
+    <div class="modalBg2">
+        <div class = "modalDiv">
+            <input type="text" class="quizName" placeholder="Quiz name">
+            <input type="file" class="quizImage">
+            <button class="buttonSubmit">Submit</button>
+        </div>
+    </div>
+
+    <script src="/tests/static/js/jquery-3.7.1.min.js"></script>
     <script src="/tests/static/js/tests.js"></script>
 {% endblock content %}
 

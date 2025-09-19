@@ -5,6 +5,8 @@ from werkzeug.utils import secure_filename
 import os
 from Project.settings import project
 
+
+
 def render_user_profile():
     user = flask_login.current_user
     if flask.request.method == "POST":
