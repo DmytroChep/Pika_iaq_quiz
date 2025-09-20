@@ -15,7 +15,7 @@ const QuizNameBtn = document.querySelector(".buttonSubmit")
 const QuizNameInput = document.querySelector(".quizName")
 
 QuizNameBtn.addEventListener("click", () => {
-    if (QuizNameInput.value != ""){
+    if (QuizNameInput.value != "" && document.querySelector(".quizImage").files[0]){
         modalQuizName.style.display = "none"
         modalQuizName2.style.display = "none"
     }
@@ -40,6 +40,9 @@ document.querySelector(".returnToMain").addEventListener("click", () => {
     
     allQuestions.forEach(element => {
         let stringyfiedCount = `${countQuestion}`;
+        formData.append(`answerImage1_${stringyfiedCount}`, document.querySelector(`.content${stringyfiedCount} .main-content .necessary #answer1 .addImageInput`).files[0])
+        formData.append(`answerImage2_${stringyfiedCount}`, document.querySelector(`.content${stringyfiedCount} .main-content .necessary #answer2 .addImageInput`).files[0])
+        
         questions[stringyfiedCount] = {
             questionTitle: document.querySelector(`.content${stringyfiedCount} .main-content .question #question_text`).value,
             answer1: {
@@ -57,8 +60,15 @@ document.querySelector(".returnToMain").addEventListener("click", () => {
             const answer3Input = document.querySelector(`.content${stringyfiedCount} .main-content .additional #answer3 #answer_input`);
             const answer4Input = document.querySelector(`.content${stringyfiedCount} .main-content .additional #answer4 #answer_input`);
             
-            if (answer3Input) questions[stringyfiedCount].answer3.title = answer3Input.value;
-            if (answer4Input) questions[stringyfiedCount].answer4.title = answer4Input.value;
+            if (answer3Input){   
+                questions[stringyfiedCount].answer3.title = answer3Input.value;
+                formData.append(`answerImage3_${stringyfiedCount}`, document.querySelector(`.content${stringyfiedCount} .main-content .additional #answer3 .addImageInput`).files[0])
+            }
+            if (answer4Input){
+                questions[stringyfiedCount].answer4.title = answer4Input.value;
+                formData.append(`answerImage4_${stringyfiedCount}`, document.querySelector(`.content${stringyfiedCount} .main-content .additional #answer4 .addImageInput`).files[0])
+            }
+                
         }
         
         countQuestion++;

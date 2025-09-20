@@ -9,7 +9,8 @@ from datetime import datetime
 from werkzeug.utils import secure_filename
 
 def save_test():
-    print(flask.request.form)
+    print(flask.request.form)     
+    print(flask.request.files)
     questions_list = []
     quiz_name = flask.request.form["quiz_name"]
     quiz_photo = None
@@ -46,6 +47,18 @@ def save_test():
             question_object.answer_name4 = question_now["answer4"]["title"]
         except:
             pass
+
+
+        if flask.request.files[f"answerImage1_{count}"]:
+            file = flask.request.files[f"answerImage1_{count}"]
+
+            filename = secure_filename(file.filename)
+            filepath = os.path.join("tests", "static", "answer_images", filename)
+
+            file.save(filepath)
+
+            question_object.answer_image1 = filename
+
         questions_list.append(question_object)
 
     DATABASE.session.add_all(questions_list)
