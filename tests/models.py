@@ -1,6 +1,7 @@
 from sqlalchemy.orm import relationship
 from Project.db import DATABASE
 from datetime import datetime
+from sqlalchemy.dialects.postgresql import ARRAY
 
 class Quiz(DATABASE.Model):
     __tablename__ = "quizes"
@@ -20,6 +21,7 @@ class Question(DATABASE.Model):
     __tablename__ = "questions"
     id = DATABASE.Column(DATABASE.Integer, primary_key=True)
     
+    corrrect_answers = DATABASE.Column(DATABASE.String(50))
 
     quiz_id = DATABASE.Column(DATABASE.Integer, DATABASE.ForeignKey('quizes.id'))
     

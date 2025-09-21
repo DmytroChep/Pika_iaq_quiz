@@ -35,11 +35,13 @@ def save_test():
     DATABASE.session.commit()
     for count in range(len(json.loads(flask.request.form["questions"]))):
         question_now = json.loads(flask.request.form["questions"])[str(count + 1)]
+
         question_object = Question(
             quiz_id=quiz_object.id,
             question_name=question_now["questionTitle"],
             answer_name1=question_now["answer1"]["title"],
             answer_name2=question_now["answer2"]["title"],
+            corrrect_answers = flask.request.form[f"correctAnswers{count + 1}"]
         )
 
         try:
@@ -47,10 +49,26 @@ def save_test():
             question_object.answer_name4 = question_now["answer4"]["title"]
         except:
             pass
+        
 
 
-        if flask.request.files[f"answerImage1_{count}"]:
-            file = flask.request.files[f"answerImage1_{count}"]
+        string_flask_files = str(flask.request.files)
+
+        if f"questionImage{count + 1}" in string_flask_files:
+            file = flask.request.files[f"questionImage{count + 1}"]
+
+            filename = secure_filename(file.filename)
+            filepath = os.path.join("tests", "static", "question_images", filename)
+
+            file.save(filepath)
+
+            question_object.question_image = filename
+
+
+
+        if f"answerImage1_{count + 1}" in string_flask_files:
+            print("1")
+            file = flask.request.files[f"answerImage1_{count + 1}"]
 
             filename = secure_filename(file.filename)
             filepath = os.path.join("tests", "static", "answer_images", filename)
@@ -58,6 +76,36 @@ def save_test():
             file.save(filepath)
 
             question_object.answer_image1 = filename
+        if f"answerImage2_{count + 1}" in string_flask_files:
+            print("2")
+            file = flask.request.files[f"answerImage2_{count + 1}"]
+
+            filename = secure_filename(file.filename)
+            filepath = os.path.join("tests", "static", "answer_images", filename)
+
+            file.save(filepath)
+
+            question_object.answer_image2 = filename
+        if f"answerImage3_{count + 1}" in string_flask_files:
+            print("3")
+            file = flask.request.files[f"answerImage3_{count + 1}"]
+
+            filename = secure_filename(file.filename)
+            filepath = os.path.join("tests", "static", "answer_images", filename)
+
+            file.save(filepath)
+
+            question_object.answer_image3 = filename
+        if f"answerImage4_{count + 1}" in string_flask_files:
+            print("4")
+            file = flask.request.files[f"answerImage4_{count + 1}"]
+
+            filename = secure_filename(file.filename)
+            filepath = os.path.join("tests", "static", "answer_images", filename)
+
+            file.save(filepath)
+
+            question_object.answer_image4 = filename
 
         questions_list.append(question_object)
 

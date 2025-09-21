@@ -358,9 +358,11 @@ button{
     border-radius: 20px;
 }
 
-#inputImageQuestion{
+.addImageInputQuestion{
     display: none;
 }
+
+
 
 
 .modalBg{
@@ -385,6 +387,13 @@ button{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+input[type = checkbox]{
+    height: 2.5vh;
+    width: 2.5vh;
+    margin-left: 1vw;
+    margin-top: 1vh;
 }
 
 .modalDiv{
@@ -419,3 +428,5 @@ button{
     color: black;
     font-size: 18px;
 }
+
+

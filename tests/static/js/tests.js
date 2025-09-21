@@ -13,6 +13,15 @@ const modalQuizName = document.querySelector(".modalBg")
 const modalQuizName2 = document.querySelector(".modalBg2")
 const QuizNameBtn = document.querySelector(".buttonSubmit")
 const QuizNameInput = document.querySelector(".quizName")
+const AllImageInputs = document.querySelectorAll(".addImageInput")
+function allImageIpnutsReload(){
+    AllImageInputs.forEach((element) => {
+        element.addEventListener("change", (event) => {
+            console.log(event.target.files[0])
+        })
+    })
+}
+
 
 QuizNameBtn.addEventListener("click", () => {
     if (QuizNameInput.value != "" && document.querySelector(".quizImage").files[0]){
@@ -40,9 +49,25 @@ document.querySelector(".returnToMain").addEventListener("click", () => {
     
     allQuestions.forEach(element => {
         let stringyfiedCount = `${countQuestion}`;
-        formData.append(`answerImage1_${stringyfiedCount}`, document.querySelector(`.content${stringyfiedCount} .main-content .necessary #answer1 .addImageInput`).files[0])
-        formData.append(`answerImage2_${stringyfiedCount}`, document.querySelector(`.content${stringyfiedCount} .main-content .necessary #answer2 .addImageInput`).files[0])
+        console.log(stringyfiedCount)
+        console.log(document.querySelector(`#inputImage1_${stringyfiedCount}`))
+        formData.append(`answerImage1_${stringyfiedCount}`, document.querySelector(`.content${stringyfiedCount} .main-content .necessary #answer1 #inputImage1_${stringyfiedCount}`).files[0])
+        formData.append(`answerImage2_${stringyfiedCount}`, document.querySelector(`.content${stringyfiedCount} .main-content .necessary #answer2 #inputImage2_${stringyfiedCount}`).files[0])
+
+        const checkboxAnswers = Array.from(document.querySelectorAll(`.correct_answer${stringyfiedCount}`));
+        const CheckedAnswer = [];
+        checkboxAnswers.forEach((element) => {
+            if (element.checked) {
+                CheckedAnswer.push(element.value);
+                console.log(element);
+            }
+        });
+        console.log(CheckedAnswer);
+
+        formData.append(`correctAnswers${stringyfiedCount}`, CheckedAnswer)
         
+        formData.append(`questionImage${stringyfiedCount}`, document.querySelector(`#inputImageQuestion${stringyfiedCount}`).files[0])
+
         questions[stringyfiedCount] = {
             questionTitle: document.querySelector(`.content${stringyfiedCount} .main-content .question #question_text`).value,
             answer1: {
@@ -62,11 +87,11 @@ document.querySelector(".returnToMain").addEventListener("click", () => {
             
             if (answer3Input){   
                 questions[stringyfiedCount].answer3.title = answer3Input.value;
-                formData.append(`answerImage3_${stringyfiedCount}`, document.querySelector(`.content${stringyfiedCount} .main-content .additional #answer3 .addImageInput`).files[0])
+                formData.append(`answerImage3_${stringyfiedCount}`, document.querySelector(`.content${stringyfiedCount} .main-content .additional #answer3  #inputImage3_${stringyfiedCount}`).files[0])
             }
             if (answer4Input){
                 questions[stringyfiedCount].answer4.title = answer4Input.value;
-                formData.append(`answerImage4_${stringyfiedCount}`, document.querySelector(`.content${stringyfiedCount} .main-content .additional #answer4 .addImageInput`).files[0])
+                formData.append(`answerImage4_${stringyfiedCount}`, document.querySelector(`.content${stringyfiedCount} .main-content .additional #answer4  #inputImage4_${stringyfiedCount}`).files[0])
             }
                 
         }
@@ -83,6 +108,7 @@ document.querySelector(".returnToMain").addEventListener("click", () => {
         processData: false, 
         contentType: false, 
         success: function(response) {
+            countQuestion = 0
             location.href = "/";
         },
         error: function(xhr, status, error) {
@@ -108,6 +134,7 @@ function ChooseQuestion(){
 
 function addImageForInputsFunc(){
     const questionImageInput = document.querySelectorAll(".addImageInputQuestion")
+    console.log("question now: ", questCount)
     questionImageInput.forEach((element) => {
         element.addEventListener("change", function(event){
             let answerCount = element.id[element.id.length - 1] 
@@ -134,10 +161,10 @@ function addImageForInputsFunc(){
     //     addImageInputs.push(element)
     // })
     addImageInputs.forEach((element) => {
-        element.addEventListener("change", function(event){
-            let answerCount = element.id[element.id.length - 1]
+        element.addEventListener("change", function(event){ 
+            let answerCount = element.id[element.id.length - 3]
             console.log(answerCount) 
-            const ImageCheck = document.querySelector(`.content${questCount} .necessary .answer #answerImage${answerCount}`) 
+            const ImageCheck = document.querySelector(`.content${questCount} .main-content .necessary .answer #answerImage${answerCount}`) 
             const selectedFiles = event.target.files;
             const urlImageObj = URL.createObjectURL(selectedFiles[0])
     
@@ -146,7 +173,7 @@ function addImageForInputsFunc(){
                 imageDom.src = urlImageObj
                 imageDom.classList.add("AnswerImage")
                 imageDom.id = `answerImage${answerCount}`
-                document.querySelector(`.content${questCount} .necessary #answer${answerCount} `).appendChild(imageDom)
+                document.querySelector(`.content${questCount} .main-content .necessary #answer${answerCount} `).appendChild(imageDom)
             } else{
                 ImageCheck.src = urlImageObj
             }
@@ -155,9 +182,9 @@ function addImageForInputsFunc(){
 
     addImageInputsAdditional.forEach((element) => {
         element.addEventListener("change", function(event){
-            let answerCount = element.id[element.id.length - 1]
+            let answerCount = element.id[element.id.length - 3]
             console.log(answerCount) 
-            const ImageCheck = document.querySelector(`.content${questCount} .additional .answer #answerImage${answerCount}`) 
+            const ImageCheck = document.querySelector(`.content${questCount} .main-content .additional .answer #answerImage${answerCount}`) 
             const selectedFiles = event.target.files;
             const urlImageObj = URL.createObjectURL(selectedFiles[0])
     
@@ -166,7 +193,7 @@ function addImageForInputsFunc(){
                 imageDom.src = urlImageObj
                 imageDom.classList.add("AnswerImage")
                 imageDom.id = `answerImage${answerCount}`
-                document.querySelector(`.content${questCount} .additional #answer${answerCount}`).appendChild(imageDom)
+                document.querySelector(`.content${questCount} .main-content .additional #answer${answerCount}`).appendChild(imageDom)
             } else{
                 ImageCheck.src = urlImageObj
             }
@@ -178,8 +205,8 @@ addImageForInputsFunc()
 
 
 
-
 function addAnswer(){
+    
     let count = getLocalCount()
     count ++
     let Additional = document.querySelector(`.content${questCount} .main-content .additional`)
@@ -193,12 +220,12 @@ function addAnswer(){
     input.type = 'checkbox';
     input.value = count;
     input.name = 'correct_answer[]';
-    input.id = 'checkbox';
+    input.className = `correct_answer${questCount}`
 
     let inputTypeFile = document.createElement("input")
     inputTypeFile.type = "file"
     inputTypeFile.className = "addImageInput"
-    inputTypeFile.id = `inputImage${count}`
+    inputTypeFile.id = `inputImage${count}_${questCount}`
 
     let answerInput = document.createElement('input');
     answerInput.type = "text";
@@ -207,7 +234,7 @@ function addAnswer(){
     answerInput.id = "answer_input"
         
     let addButton = document.createElement('label');
-    addButton.setAttribute("for", `inputImage${count}`)
+    addButton.setAttribute("for", `inputImage${count}_${questCount}`)
     addButton.className = 'addImageBtn';
     let image = document.createElement('img');
     image.src = '/tests/static/images/add_image.svg';
@@ -238,7 +265,7 @@ function addAnswer(){
     Additional.appendChild(PlusButton)
     
     addImageForInputsFunc()
-
+    allImageIpnutsReload()
     
     if (count == 4){
         PlusButton.remove()
@@ -277,6 +304,7 @@ function deleteAnswer(id){
     }
 
 function addQuestion(){
+    
     if (questCount <20 ){
 
         questCount++;
@@ -303,10 +331,10 @@ function addQuestion(){
         const addImageInputQuestion = document.createElement('input');
         addImageInputQuestion.type = 'file';
         addImageInputQuestion.className = 'addImageInputQuestion';
-        addImageInputQuestion.id = 'inputImageQuestion';
+        addImageInputQuestion.id = `inputImageQuestion${questCount}`;
         
         const addImageLabelQuestion = document.createElement('label');
-        addImageLabelQuestion.htmlFor = 'inputImageQuestion';
+        addImageLabelQuestion.htmlFor = `inputImageQuestion${questCount}`;
         addImageLabelQuestion.className = 'addImageBtnQuestion';
         
         const addImageLogoQuestion = document.createElement('img');
@@ -340,18 +368,17 @@ function addQuestion(){
         
         const checkbox1 = document.createElement('input');
         checkbox1.type = 'checkbox';
-        checkbox1.id = "checkbox"
         checkbox1.value = '1';
         checkbox1.name = 'correct_answer[]';
-        checkbox1.className = 'correct_answer';
+        checkbox1.className = `correct_answer${questCount}`;
         
         const fileInput1 = document.createElement('input');
         fileInput1.type = 'file';
         fileInput1.className = 'addImageInput';
-        fileInput1.id = 'inputImage1';
+        fileInput1.id = `inputImage1_${questCount}`;
         
         const fileLabel1 = document.createElement('label');
-        fileLabel1.htmlFor = 'inputImage1';
+        fileLabel1.htmlFor = `inputImage1_${questCount}`;
         fileLabel1.className = 'addImageBtn';
         
         const fileLogo1 = document.createElement('img');
@@ -379,17 +406,16 @@ function addQuestion(){
         const fileInput2 = document.createElement('input');
         fileInput2.type = 'file';
         fileInput2.className = 'addImageInput';
-        fileInput2.id = 'inputImage2';
+        fileInput2.id = `inputImage2_${questCount}`;
         
         const checkbox2 = document.createElement('input');
         checkbox2.type = 'checkbox';
         checkbox2.value = '2';
-        checkbox2.id = "checkbox"
         checkbox2.name = 'correct_answer[]';
-        checkbox2.className = 'correct_answer';
+        checkbox2.className = `correct_answer${questCount}`;
         
         const fileLabel2 = document.createElement('label');
-        fileLabel2.htmlFor = 'inputImage2';
+        fileLabel2.htmlFor = `inputImage2_${questCount}`;
         fileLabel2.className = 'addImageBtn';
         
         const fileLogo2 = document.createElement('img');
@@ -440,6 +466,8 @@ function addQuestion(){
 
         document.querySelector(`.content${questCount -1}`).style.display = "none"
         ChooseQuestion()
+        allImageIpnutsReload()
+        addImageForInputsFunc()
         document.querySelectorAll("#plus").forEach((element) => {
             element.addEventListener("click", addAnswer)
         })
