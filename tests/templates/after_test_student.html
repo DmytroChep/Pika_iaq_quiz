@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}PikaIQ | After Test{% endblock title %}
+
+{% block link %}
+<link rel="stylesheet" href="{{url_for('tests.static', filename= 'css/after_test_student.css')}}">
+{% endblock link %}
+
+{% block content %}
+    <header>
+        <img src="{{ url_for('core.static', filename= 'images/logo/logo.png') }}">
+
+
+        <div class="nameBurger">
+            <p class="LogoText">Pikaiq</p>
+            <div class="rightMenu">
+                <div class="nameUsername">
+                    {% if current_user.is_authenticated %}
+                    
+                        <p class="username">{{ current_user.login }}</p>
+                    
+                    {% else %}
+
+                        <p class="username">Name</p>
+                        <p class="username">Second name</p>
+                    {% endif %}
+                </div>
+                <div class="burgerMenu">
+                    
+                    <img src="{{ url_for('core.static', filename= 'images/burger/burger.png') }}">
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <div id="place">
+        <div id="your-place">
+            <span>Your place:{{1}}</span>
+        </div>
+        <div id="right-answers">
+            <span>Right answers: {{65}}%</span>
+        </div>
+    </div>
+    
+        <div class="questions">
+            <div class="quest">
+                <div class="quest_top">
+                    <span>Question {{1}}</span>
+                    <span>Time wasted: {{8}} seconds</span>
+                </div>
+                <div class="answer" id = "right">
+                    <span>Right answer</span>
+                </div>
+            </div>
+            <div class="quest">
+                <div class="quest_top" >
+                    <span>Question {{1}}</span>
+                    <span>Time wasted: {{8}} seconds</span>
+                </div>
+                <div class="answers">
+                    <div class="answer" id = "wrong">
+                        <span>Wrong answer</span>
+                    </div>
+                    <div class="answer" id = "right">
+                        <span>Right answer</span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+{% endblock content %}

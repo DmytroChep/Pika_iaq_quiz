@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}PikaIQ | After Test{% endblock title %}
+
+{% block link %}
+<link rel="stylesheet" href="{{url_for('tests.static', filename= 'css/after_test_teacher.css')}}">
+{% endblock link %}
+
+{% block content %}
+    <header>
+        <img src="{{ url_for('core.static', filename= 'images/logo/logo.png') }}">
+
+
+        <div class="nameBurger">
+            <p class="LogoText">Pikaiq</p>
+            <div class="rightMenu">
+                <div class="nameUsername">
+                    {% if current_user.is_authenticated %}
+                    
+                        <p class="username">{{ current_user.login }}</p>
+                    
+                    {% else %}
+
+                        <p class="username">Name</p>
+                        <p class="username">Second name</p>
+                    {% endif %}
+                </div>
+                <div class="burgerMenu">
+                    
+                    <img src="{{ url_for('core.static', filename= 'images/burger/burger.png') }}">
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <div id="score">
+        <div id="average-score">
+            <span id="percent">Average score: {{20}}%</span>
+        </div>
+        <div id="students">
+            <span id="student-text">Students: {{8}}</span>
+        </div>
+    </div>
+    <div id="students-container">
+
+    </div>
+
+    <script src="/tests/static/js/after_test_teacher.js"></script>
+{% endblock %}

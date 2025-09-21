@@ -39,7 +39,7 @@
 
             <div id = "multiple-choice">
                 <a href="/"><button type ="button">🢐</button></a>
-                <img src="/tests/static/images/Frame 179.svg" alt="■">
+                <img src="{{ url_for('tests.static', filename= 'images/Frame 179.svg') }}" alt="■">
                 <span>multiple choice</span>
             </div>
         </div>
@@ -56,7 +56,7 @@
         <div class="content">
             <div class="main-content">
                 <div class="question">
-                    <button type = "button"><img src="/tests/static/images/add_image.svg" alt="" onclick="document.getElementById('file').click()"></button>
+                    <button type = "button"><img src="{{ url_for('tests.static', filename= 'images/add_image.svg') }}" alt="" onclick="document.getElementById('file').click()"></button>
                     <input type="text" placeholder="Enter text of a question" name="question_text" id = "question_text" >
                     <span id="number-quest">question 1</span>
                 </div>
@@ -64,12 +64,12 @@
                 <div class="necessary">
                     <div class="answer">
                         <input type="checkbox" value="1" name = "correct_answer[]" id="checkbox">
-                        <button type = "button" onclick="document.getElementById('file').click()" id="add_button"><img src="/tests/static/images/add_image.svg" alt="■"></button>
+                        <button type = "button" onclick="document.getElementById('file').click()" id="add_button"><img src="{{ url_for('tests.static', filename= 'images/add_image.svg') }}" alt="■"></button>
                         <input type="text" placeholder="Enter an answer" id="answer_input" name="answer[]">
                     </div>
                     <div class="answer">
                         <input type="checkbox" value="2" name = "correct_answer[]" id="checkbox" class="correct_answer">
-                        <button type = "button" onclick="document.getElementById('file').click()"><img src="/tests/static/images/add_image.svg" alt="■"></button>
+                        <button type = "button" onclick="document.getElementById('file').click()"><img src="{{ url_for('tests.static', filename= 'images/add_image.svg') }}" alt="■"></button>
                         <input type="text" placeholder="Enter an answer" name="answer[]">
                     </div>
                 </div>
