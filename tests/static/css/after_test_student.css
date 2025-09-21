@@ -1,0 +1,179 @@
+*{
+    margin: 0vh;
+    padding: 0vh;
+}
+
+@font-face {
+    font-family: GreatVibe;
+    src: url(fonts/GreatVibe.ttf);
+}
+
+@font-face {
+    font-family: Jost;
+    src: url(fonts/Jost.ttf);
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #F0F8FF;
+    overflow: hidden;
+}
+
+body * {
+    font-family: Jost;
+}
+
+
+
+header {
+    width: 100vw;
+    background-color: #5DE3E3;
+    height: 74px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    border-bottom: 1px solid black;
+    display: flex;
+    gap: 42vw;
+}
+
+header img {
+    height: 55px;
+}
+
+header .nameBurger .LogoText {
+    font-size: 36px;
+    letter-spacing: 15px;
+    font-family: GreatVibe;
+}
+
+header .nameBurger {
+    width: 175px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    gap: 600px;
+}
+
+header .nameBurger .nameUsername {
+    background-color: white;
+    border-radius: 11px;
+    width: 163px;
+    height: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    padding-right: 7px;
+}
+
+header .nameBurger .nameUsername p {
+    width: 100px;
+    font-size: 17px;
+}
+
+header .nameBurger .burgerMenu {
+    width: 46px;
+    height: 46px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 11px;
+}
+
+header .nameBurger .burgerMenu img {
+    width: 24px;
+    height: 24px;
+}
+
+header .nameBurger .rightMenu {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/*  */
+
+
+.questions{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100vw;
+    height: 63.7vh;
+}
+
+.quest{
+    background-color: #5DE3E3;
+    width: 46.5vw;
+    height: 9.6vh;
+    border-radius: 1.2vh;
+    margin-bottom: 1vh;
+    font-size: 2vh;
+    padding: 1vh 1vw 0vh 1vw;
+    border: 0.2vh solid black;
+    box-shadow: 0 0.3em 0.5em rgb(117, 138, 141);
+}
+
+.quest_top{
+    display: flex;
+    justify-content: space-between;
+    
+}
+.answers{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 0.5vw;
+}
+.answer{
+    margin-top: 1vh;
+    background-color: #FFFFFF;
+    width: 10.7vw;
+    height: 3.6vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1.2vh;
+    box-shadow: 0 0.3em 0.5em rgb(117, 138, 141);
+}
+#right{
+    border: 0.4vh solid #4EF43F;
+}
+#wrong{
+    border: 0.4vh solid #FF0000;
+}
+
+#place{
+    margin-top: 6vh;
+    margin-bottom: 6vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #5DE3E3;
+    width: 20.8vw;
+    height: 23vh;
+    gap: 1vh;
+    border-radius: 2vh;
+    border: 0.2vh solid black;
+    box-shadow: 0 0.3em 0.5em rgb(117, 138, 141);
+}
+
+#your-place, #right-answers{
+    background-color: #FFFFFF;
+    width: 16.6vw;
+    height: 6.5vh;
+    border-radius: 2vh;
+    box-shadow: 0 0.14em 0.5em rgb(117, 138, 141);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3vh;
+}
