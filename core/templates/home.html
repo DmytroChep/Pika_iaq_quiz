@@ -54,7 +54,7 @@
         <div  class = "testsPosition">
             <div class="listTests" id = "allTests">
                 {% for test in all_tests %}
-                    <div class="test" id = "test{{test.id}}">
+                    <div class="test" id = "{{test.id}}">
                     <img src="tests/static/quiz_avatars/{{test.photo}}">
                     <p class="testName">{{ test.name }}</p>
                     <p>created: {{ test.date_creation }}</p>
@@ -64,7 +64,7 @@
 
             <div class="listTests" id = "userTests">
                 {% for test in tests_from_user %}
-                    <div class="test" id = "test{{test.id}}">
+                    <div class="test" id = "{{test.id}}">
                     <img src="tests/static/quiz_avatars/{{test.photo}}">
                     <p class="testName">{{ test.name }}</p>
                     <p>created: {{ test.date_creation }}</p>

@@ -122,6 +122,6 @@ def render_tests():
         return flask.redirect("registration")
     
 
-def render_tests_passing():
+def render_tests_passing(test_id):
 
-    return flask.redirect("test_passing.html")
+    return flask.render_template("test_passing.html")

@@ -31,6 +31,6 @@ filter_madeByYou.addEventListener("click", () => {
 
 document.querySelectorAll(".test").forEach((element) => {
     element.addEventListener("click", () => {
-        
+        window.location.href = `/test_passing/${element.id}`
     })
 })

@@ -15,6 +15,7 @@ registration.reg_app.add_url_rule(rule="/logout", view_func= registration.render
 user_profile.user_profile.add_url_rule(rule="/profile", view_func=user_profile.render_user_profile, methods=["GET", "POST"])
 tests.tests_app.add_url_rule(rule="/test_creation/", view_func=tests.render_tests, methods=["GET", "POST"])
 tests.tests_app.add_url_rule(rule="/save_test", view_func=tests.save_test, methods=["GET", "POST"])
+tests.tests_app.add_url_rule(rule="/test_passing/<int:test_id>", view_func=tests.render_tests_passing, methods=["GET", "POST"])
 #
 #project.add_url_rule(
 #    rule='/registration',
