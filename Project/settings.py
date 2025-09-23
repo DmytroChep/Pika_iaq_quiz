@@ -1,7 +1,7 @@
 import flask
 import flask_migrate
 import flask_sqlalchemy
-
+from flask_socketio import SocketIO
 
 import os
 
@@ -13,3 +13,4 @@ project = flask.Flask(
     instance_path= os.path.abspath(os.path.join(__file__, '..', 'instance')),
 )
 
+socketio = SocketIO(project)

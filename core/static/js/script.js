@@ -28,3 +28,9 @@ filter_madeByYou.addEventListener("click", () => {
     filter_madeByYou.style.backgroundColor = "#5AB9EA"
     userTestsDiv.style.display = "flex"
 })
+
+document.querySelectorAll(".test").forEach((element) => {
+    element.addEventListener("click", () => {
+        
+    })
+})

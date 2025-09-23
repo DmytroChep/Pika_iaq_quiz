@@ -16,6 +16,7 @@ class Quiz(DATABASE.Model):
     date_creation = DATABASE.Column(DATABASE.String, default = datetime.now().strftime("%Y.%m.%d"))
     
     questions = relationship("Question", backref="quiz")
+    active_quiz = relationship("activeQuizes", backref="quiz")
 
 class Question(DATABASE.Model):
     __tablename__ = "questions"
@@ -40,3 +41,11 @@ class Question(DATABASE.Model):
     
     answer_name4 = DATABASE.Column(DATABASE.String(50), nullable=True)
     answer_image4 = DATABASE.Column(DATABASE.String, nullable=True)
+
+
+class activeQuizes(DATABASE.Model):
+    id = DATABASE.Column(DATABASE.Integer, primary_key=True)
+
+    quiz_number =  DATABASE.Column(DATABASE.Integer)
+
+    quiz_id = DATABASE.Column(DATABASE.Integer, DATABASE.ForeignKey('quizes.id'))

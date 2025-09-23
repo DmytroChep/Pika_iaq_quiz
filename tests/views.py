@@ -120,3 +120,8 @@ def render_tests():
         return flask.render_template("tests.html", avatar_filepath=os.path.join("..", "user_profile", "static", "user_avatars", flask_login.current_user.avatar))
     else:
         return flask.redirect("registration")
+    
+
+def render_tests_passing():
+
+    return flask.redirect("test_passing.html")
