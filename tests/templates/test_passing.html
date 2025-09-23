@@ -2,11 +2,45 @@
 
 {% block title %}PikaIQ | Test{% endblock title %}
 {% block link %}
-<link rel="stylesheet" href="{{url_for('tests.static', filename= 'css/tests.css')}}">
+<link rel="stylesheet" href="{{url_for('tests.static', filename= 'css/test_passing.css')}}">
 <script src="/tests/static/js/jquery-3.7.1.min.js" defer></script>
-    <script src="/tests/static/js/test_passing.js" defer></script>
+<script src="/tests/static/js/test_passing.js" defer></script>
 {% endblock link %}
 {% block content %}
+        <div class="content content1">
+            <div class="main-content">
+                <button type="button" id="get-out">get out<a href="/"><img src="{{url_for('tests.static', filename= 'images/logout.svg')}}" alt=""></a></button>
+                <div class="question">
+                    <div>
+                        <span id = "question_text">Question{{1}}</span>
+                        <img src="" alt="">
+                    </div>
+                    <span id="number-quest">question 1</span>
+                </div>
     
+                <div class="answers-container">
+                    <div class="necessary">
+                        <div class="answer" id="answer1">
+                            <button type="button"><img src="" alt="Image"><span>{{1}}</span></button>
+                        </div>
+                        <div class="answer" id="answer2">
+                            <button type="button"><img src="" alt="Image"><span>{{2}}</span></button>
+                        </div>
+                    </div>
+                    <div class="additional">
+                        <div class="answer" id="answer1">
+                            <button type="button"><img src="" alt="Image"><span>{{3}}</span></button>
+                        </div>
+                        <div class="answer" id="answer2">        
+                            <button type="button"><img src="" alt="Image"><span>{{4}}</span></button>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                
+            </div>
+        </div>
+
 {% endblock content %}
 
