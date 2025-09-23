@@ -7,6 +7,11 @@ from flask_login import current_user
 from .models import Question, Quiz, DATABASE
 from datetime import datetime
 from werkzeug.utils import secure_filename
+from flask_socketio import join_room, leave_room, emit
+import io, base64
+from Project.settings import socketio
+
+
 
 def save_test():
     print(flask.request.form)     
@@ -125,3 +130,8 @@ def render_tests():
 def render_tests_passing(test_id):
 
     return flask.render_template("test_passing.html")
+
+
+@socketio.on("joinQuiz")
+def joinQuiz(data):
+    print(f"user {data["user"]} connected to quiz {data["quiz"]}")

@@ -160,3 +160,8 @@ button{
     margin-left: 0.5vw;
     height: 5vh;
 }
+
+
+.hidden{
+    display: none;
+}

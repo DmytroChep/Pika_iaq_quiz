@@ -3,11 +3,11 @@
 {% block title %}PikaIQ | Test{% endblock title %}
 {% block link %}
 <link rel="stylesheet" href="{{url_for('tests.static', filename= 'css/test_passing.css')}}">
-<script src="/tests/static/js/jquery-3.7.1.min.js" defer></script>
-<script src="/tests/static/js/test_passing.js" defer></script>
+
 {% endblock link %}
 {% block content %}
         <div class="content content1">
+            <p class="hidden username">{{ current_user.login }}</p>
             <div class="main-content">
                 <button type="button" id="get-out">get out<a href="/"><img src="{{url_for('tests.static', filename= 'images/logout.svg')}}" alt=""></a></button>
                 <div class="question">
@@ -42,5 +42,7 @@
             </div>
         </div>
 
+<script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.min.js"></script>
+<script src="/tests/static/js/jquery-3.7.1.min.js"></script>
+<script src="/tests/static/js/test_passing.js" defer></script>
 {% endblock content %}
-
