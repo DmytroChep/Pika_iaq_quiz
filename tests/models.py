@@ -1,7 +1,6 @@
 from sqlalchemy.orm import relationship
 from Project.db import DATABASE
 from datetime import datetime
-from sqlalchemy.dialects.postgresql import ARRAY
 
 class Quiz(DATABASE.Model):
     __tablename__ = "quizes"
@@ -16,7 +15,7 @@ class Quiz(DATABASE.Model):
     date_creation = DATABASE.Column(DATABASE.String, default = datetime.now().strftime("%Y.%m.%d"))
     
     questions = relationship("Question", backref="quiz")
-    active_quiz = relationship("activeQuizes", backref="quiz")
+    active_quiz = relationship("activeQuiz", backref="quiz")
 
 class Question(DATABASE.Model):
     __tablename__ = "questions"
@@ -43,9 +42,10 @@ class Question(DATABASE.Model):
     answer_image4 = DATABASE.Column(DATABASE.String, nullable=True)
 
 
-class activeQuizes(DATABASE.Model):
+class activeQuiz(DATABASE.Model):
+    __tablename__ = "activeQuiz"
     id = DATABASE.Column(DATABASE.Integer, primary_key=True)
-
-    quiz_number =  DATABASE.Column(DATABASE.Integer)
-
+    quiz_number = DATABASE.Column(DATABASE.Integer)
     quiz_id = DATABASE.Column(DATABASE.Integer, DATABASE.ForeignKey('quizes.id'))
+    
+    users = relationship("User", back_populates="active_quiz")  

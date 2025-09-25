@@ -6,41 +6,60 @@
 
 {% endblock link %}
 {% block content %}
-        <div class="content content1">
-            <p class="hidden username">{{ current_user.login }}</p>
-            <div class="main-content">
-                <button type="button" id="get-out">get out<a href="/"><img src="{{url_for('tests.static', filename= 'images/logout.svg')}}" alt=""></a></button>
-                <div class="question">
-                    <div>
-                        <span id = "question_text">Question{{1}}</span>
-                        <img src="" alt="">
-                    </div>
-                    <span id="number-quest">question 1</span>
+    <div class="content content1">
+        <p class="hidden username">{{ current_user.login }}</p>
+        <div class="main-content">
+            <button type="button" id="get-out">get out<a href="/"><img src="{{url_for('tests.static', filename= 'images/logout.svg')}}" alt=""></a></button>
+            <div class="question">
+                <div>
+                    <span id = "question_text">{{ test.questions[0].question_name }}</span>
+                    {% if test.questions[0].question_image %}
+                        <img src="/tests/static/question_images/{{test.questions[0].question_image}}" alt="">
+                    {% endif %}
                 </div>
-    
-                <div class="answers-container">
-                    <div class="necessary">
-                        <div class="answer" id="answer1">
-                            <button type="button"><img src="" alt="Image"><span>{{1}}</span></button>
-                        </div>
-                        <div class="answer" id="answer2">
-                            <button type="button"><img src="" alt="Image"><span>{{2}}</span></button>
-                        </div>
-                    </div>
-                    <div class="additional">
-                        <div class="answer" id="answer1">
-                            <button type="button"><img src="" alt="Image"><span>{{3}}</span></button>
-                        </div>
-                        <div class="answer" id="answer2">        
-                            <button type="button"><img src="" alt="Image"><span>{{4}}</span></button>
-                        </div>
-                    </div>
-                    
-                </div>
+                <span id="number-quest">question 1</span>
+            </div>
 
+            <div class="answers-container">
+                <div class="necessary">
+                    <div class="answer" id="answer1">
+                        {% if test.questions[0].answer_image1 %}
+                            <button type="button"><img src="/tests/static/answer_images/{{test.questions[0].answer_image1}}" alt="Image"><span>{{test.questions[0].answer_name1}}</span></button>
+                        {% else %}
+                            <button type="button"><span>{{test.questions[0].answer_name1}}</span></button>
+                        {% endif %}
+                    </div>
+                    <div class="answer" id="answer2">
+                        {% if test.questions[0].answer_image2 %}
+                            <button type="button"><img src="/tests/static/answer_images/{{test.questions[0].answer_image2}}" alt="Image"><span>{{test.questions[0].answer_name2}}</span></button>
+                        {% else %}
+                            <button type="button"><span>{{test.questions[0].answer_name2}}</span></button>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="additional">
+                    <div class="answer" id="answer3">
+                        {% if test.questions[0].answer_image3 %}
+                            <button type="button"><img src="/tests/static/answer_images/{{test.questions[0].answer_image3}}" alt="Image"><span>{{test.questions[0].answer_name3}}</span></button>
+                        {% else %}
+                            <button type="button"><span>{{test.questions[0].answer_name3}}</span></button>
+                        {% endif %}
+                    </div>
+                    <div class="answer" id="answer4">    
+                        {% if test.questions[0].answer_image4 %}    
+                            <button type="button"><img src="/tests/static/answer_images/{{test.questions[0].answer_image4}}" alt="Image"><span>{{test.questions[0].answer_name4}}</span></button>
+                        {% else %}
+                            <button type="button"><span>{{test.questions[0].answer_name4}}</span></button>
+                        {% endif %}
+                    </div>
+                </div>
                 
             </div>
+
+            
         </div>
+    </div>
+
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.min.js"></script>
 <script src="/tests/static/js/jquery-3.7.1.min.js"></script>

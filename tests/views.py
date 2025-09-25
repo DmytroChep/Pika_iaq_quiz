@@ -4,13 +4,13 @@ from Project.toolbox import config_page
 import os
 import json
 from flask_login import current_user
-from .models import Question, Quiz, DATABASE
+from .models import Question, Quiz, DATABASE, activeQuiz
 from datetime import datetime
 from werkzeug.utils import secure_filename
 from flask_socketio import join_room, leave_room, emit
 import io, base64
 from Project.settings import socketio
-
+import random
 
 
 def save_test():
@@ -128,10 +128,55 @@ def render_tests():
     
 
 def render_tests_passing(test_id):
+    test = Quiz.query.get(ident = test_id)
 
-    return flask.render_template("test_passing.html")
+    
+    return flask.render_template("test_passing.html", test = test)
 
 
-@socketio.on("joinQuiz")
-def joinQuiz(data):
-    print(f"user {data["user"]} connected to quiz {data["quiz"]}")
+@socketio.on("createQuiz")
+def createQuiz(data):
+    print(f"user {data['user']} connected to quiz {data['quiz']}")
+
+    all_active_quizes = activeQuiz.query.all()
+    all_quiz_numbers = []
+    for quiz in all_active_quizes:
+        all_quiz_numbers.append(quiz.quiz_number)
+
+    random_num = random.randint(100000, 999999)
+    
+    while True:
+        if random_num in all_quiz_numbers:
+            random_num =  random.randint(100000, 999999)
+            break
+        else:
+            break
+
+    active_quiz = activeQuiz(
+        quiz_number=random_num,
+        quiz_id=data["quiz"],
+        users=[flask_login.current_user] 
+    )
+
+    DATABASE.session.add(active_quiz)
+    DATABASE.session.commit()
+
+@socketio.on('disconnect')
+def handle_disconnect(*args, **kwargs):
+    client = flask_login.current_user
+    print(client)
+
+    all_quizes = activeQuiz.query.all()
+
+    for quiz in all_quizes:
+        print(quiz.users)
+        if quiz.users != []:
+            if quiz.users[0] == client:
+                DATABASE.session.delete(quiz)
+                emit('teacherGetOut')
+            else:
+                client.active_quiz_id = None
+                emit('userGetOut')
+
+        DATABASE.session.commit()  
+    print(all_quizes)

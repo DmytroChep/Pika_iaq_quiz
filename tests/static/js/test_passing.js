@@ -9,7 +9,7 @@ const QuizId = ReturnLastElement(window.location.href.split("/"))
 
 
 
-socket.emit('joinQuiz', {
+socket.emit('createQuiz', {
     user: `${Username}`,
     quiz: `${QuizId}`
 });

@@ -289,3 +289,7 @@ main .test p {
 body{
     background-image: url("/core/static/images/bg.png");
 }
+
+button{
+    cursor: pointer;
+}
