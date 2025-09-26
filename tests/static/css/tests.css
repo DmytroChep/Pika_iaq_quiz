@@ -20,9 +20,6 @@ body{
     overflow-x: hidden;
 }
 
-.addImageInput{
-    display: none;
-}
 
 body *{
     font-family: Jost;

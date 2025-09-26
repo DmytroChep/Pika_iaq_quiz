@@ -7,40 +7,46 @@
 <script src="/tests/static/js/test_passing.js" defer></script>
 {% endblock link %}
 {% block content %}
-        <div class="content content1">
-            <div class="main-content">
-                <button type="button" id="get-out">get out<a href="/"><img src="{{url_for('tests.static', filename= 'images/logout.svg')}}" alt=""></a></button>
-                <div class="question">
-                    <div>
-                        <span id = "question_text">Question{{1}}</span>
-                        <img src="" alt="">
-                    </div>
-                    <span id="number-quest">question 1</span>
-                </div>
-    
-                <div class="answers-container">
-                    <div class="necessary">
-                        <div class="answer" id="answer1">
-                            <button type="button"><img src="" alt="Image"><span>{{1}}</span></button>
-                        </div>
-                        <div class="answer" id="answer2">
-                            <button type="button"><img src="" alt="Image"><span>{{2}}</span></button>
-                        </div>
-                    </div>
-                    <div class="additional">
-                        <div class="answer" id="answer1">
-                            <button type="button"><img src="" alt="Image"><span>{{3}}</span></button>
-                        </div>
-                        <div class="answer" id="answer2">        
-                            <button type="button"><img src="" alt="Image"><span>{{4}}</span></button>
-                        </div>
-                    </div>
-                    
-                </div>
 
-                
+<div class="content content1">
+    <div class="main-content">
+        <div id="top">
+            <div id = "top-right">
+                <span id="timer">0:30</span>
+                <span id="number-quest">{{1}}/{{10}}</span>
+            </div>
+            <button type="button" id="get-out">get out<a href="/"><img src="{{url_for('tests.static', filename= 'images/logout.svg')}}" alt=""></a></button>
+        </div>
+        <div class="question">
+            <div>
+                <span id = "question_text">Question{{1}}</span>
+                <img src="{{url_for('tests.static', filename= 'answer_images/pngimg.com_-_linux_PNG47.png')}}" alt="Image" class = "small-img" >
             </div>
         </div>
+        <div class="answers-container">
+            <div class="necessary">
+                <div class="answer" id="answer1">
+                    <button type="button"><img src="" alt="Image" class = "small-img"><span>{{1}}</span></button>
+                </div>
+                <div class="answer" id="answer2">
+                    <button type="button"><img src="" alt="Image" class = "small-img"><span>{{2}}</span></button>
+                </div>
+           </div>
+            <div class="additional">
+                <div class="answer" id="answer1">
+                    <button type="button"><img src="" alt="Image" class = "small-img"><span>{{3}}</span></button>
+                </div>
+                <div class="answer" id="answer2">        
+                    <button type="button"><img src="" alt="Image" class = "small-img"><span>{{4}}</span></button>
+                </div>
+            </div>
+            
+        </div>
 
+    </div>
+</div>
+<div id="modal-window">
+    <img src="" alt="" id="open-img">
+</div>
 {% endblock content %}
 
