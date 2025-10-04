@@ -1,6 +1,7 @@
 const Percent = document.getElementById("percent").textContent.split(" ")[2];
 const StudentsCount = document.getElementById("student-text").textContent.split(" ")[1];
 const StudentssContainer = document.getElementById('students-container');
+
 function changeScore(value){
     const bar = document.querySelector('#average-score');
     const text = document.getElementById('average-score');

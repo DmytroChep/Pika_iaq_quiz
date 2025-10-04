@@ -28,6 +28,79 @@ body *{
     font-family: Jost;
 }
 
+/*  */
+header {
+    width: 100vw;
+    background-color: #5DE3E3;
+    height: 74px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    border-bottom: 1px solid black;
+    display: flex;
+    gap: 42vw;
+}
+
+header img {
+    height: 55px;
+}
+
+header .nameBurger .LogoText {
+    font-size: 36px;
+    letter-spacing: 15px;
+    font-family: GreatVibe;
+}
+
+header .nameBurger {
+    width: 175px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    gap: 600px;
+}
+
+header .nameBurger .nameUsername {
+    background-color: white;
+    border-radius: 11px;
+    width: 163px;
+    height: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    padding-right: 7px;
+}
+
+header .nameBurger .nameUsername p {
+    width: 100px;
+    font-size: 17px;
+}
+
+header .nameBurger .burgerMenu {
+    width: 46px;
+    height: 46px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 11px;
+}
+
+header .nameBurger .burgerMenu img {
+    width: 24px;
+    height: 24px;
+}
+
+header .nameBurger .rightMenu {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/*  */
+.test_passing{
+    display: none;
+}
+
 .user_avatar{
     width:40px;
     height: 40px;
@@ -139,6 +212,31 @@ button{
     height: 20vh;
 }
 
+.before-tets-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    gap: 6vh;
+}
+
+
+.student{
+    flex: 0 0 auto; 
+    display: flex;
+    justify-content: space-between;
+    width: 36vw;
+    height: 5.4vh;
+    background-color: #FFFFFF;
+    border-radius: 1.2vh;
+    overflow: hidden;
+    margin-top: 2vh;
+    padding-left: 1vw;
+    box-shadow: 0 0.1em 0.3em rgb(117, 138, 141);
+}
+
 #modal-window{
     display: none;
     position: fixed;
@@ -160,8 +258,22 @@ button{
     justify-content: space-between;
     gap: 63vw;
 }
+#top-teacher{
+    display: flex;
+    width: 98vw;
+    gap: 1vw;
+    justify-content: start;
 
-#get-out, #timer, #number-quest{
+}
+
+#time{
+    display: flex;
+    flex-direction: column;
+    width: 10.8vw;    
+    height: 5.3vh;
+}
+
+#get-out, #timer, #number-quest, #add-time{
     margin-top: 3vh;
     height: 5.3vh;
     width: 10.8vw;
@@ -174,6 +286,14 @@ button{
     justify-content: center;
     gap: 1vw;
 }
+
+#add-time{
+    display: none;
+}
+#add-time:hover{
+    background-color: #F0F8FF;
+}
+
 #get-out{
     text-decoration: underline 0.2vh;
 }
@@ -183,8 +303,185 @@ button{
     height: 5vh;
 }
 
+.hidden{
+    display: none;
+}
+
 #top-right{
     display: flex;
     justify-content: space-between;
     gap: 1.5vw;
+}
+
+#students-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-radius: 2vh;
+    background-color: #5DE3E3;
+    width: 39.3vw;
+    height: 50vh;
+    border: 0.2vh solid black;
+    box-shadow: 0 0.1em 0.3em rgb(117, 138, 141); 
+}
+
+#quiz-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 2vh;
+    background-color: #5DE3E3;
+    width: 19.3vw;
+    height: 14vh;
+    border: 0.2vh solid black;
+    font-size: 3vh;
+    padding-top: 2vh;
+    gap: 1vh;
+    box-shadow: 0 0.1em 0.3em rgb(117, 138, 141);
+}
+
+#students-count, #quiz-code{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFFFF;
+    border-radius: 1.5vh;
+    width: 16vw;
+    height: 7vh;
+    box-shadow: 0 0.1em 0.3em rgb(117, 138, 141);
+}
+
+::-webkit-scrollbar {
+    background-color: transparent;
+    height: 1vh;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(164, 255, 250, 0.801);
+    border-radius: 1vh;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    opacity: 70%;
+    background: rgb(178, 255, 251);
+}
+
+
+/* teacher */
+
+.teacher{
+    margin-right: 3.3vw;
+}
+.test-passing{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-container{
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    gap: 10vw;
+}
+
+.kick{
+    background-color: #0085C9;
+    color: black;
+    margin: 1.2vh 1vw 0vh 0vh;
+    border-radius: 1.2vh;
+    width: 2vw;
+}
+
+.kick:hover{
+    background-color: #0773b3;
+}
+
+.question-teacher{
+    flex: 0 0 auto; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    background-color: #5DE3E3;
+    width: 45.75vw;
+    height: 9.2vh;
+    border-radius: 1.2vh;
+    border: 0.1vh solid black;
+    font-size: 2vh;
+    padding-left: 0.75vw;
+    box-shadow: 0 0.1em 0.3em rgb(117, 138, 141); 
+}
+
+#start{
+    width: 16vw;
+    height: 7vh;
+    background-color: #FFFFFF;
+    border-radius: 1.2vh;
+    box-shadow: 0 0.1em 0.3em rgb(117, 138, 141);
+    font-size: 3vh;
+    color: black;
+}
+
+#start:hover{
+    background-color: rgb(151, 226, 155);
+}
+
+#timer-modal-window{
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.9);
+    justify-content: center;
+    align-items: center;
+}
+
+#modal-timer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 6vh;
+    background-color: #FFFFFF;
+    width: 15vw;
+    height: 40vh;
+    border: 0.4vh solid black;
+    border-radius: 2vh;
+}
+
+
+#question-container{
+    display: flex;
+    flex-direction: column;
+    width: 47.5vw;
+    height: 76vh;
+    margin-bottom: 9vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    gap: 1vh;
+}
+
+
+#percent{
+    width: 45vw;
+    height: 3.3vh;
+    background-image: linear-gradient(to right, #08FD19 var(--percent, 40%), #FF5C5C var(--percent, 0%));
+    border-radius: 1vh;
+    border: 1px solid black;
+}
+
+#answer-text{
+    color: #FFFFFF;
+    font-size: 3vh;
 }

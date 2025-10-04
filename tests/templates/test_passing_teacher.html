@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block title %}  PikaIQ | Test  {%endblock title %}
+{% block link  %}
+    <link rel="stylesheet" href="{{url_for('tests.static', filename= 'css/test_passing.css')}}">
+
+{% endblock link %}
+{% block content %}
+  <div class="before-test">
+        <header>
+            <img src="{{ url_for('core.static', filename= 'images/logo/logo.png') }}">
+            
+            
+            <div class="nameBurger">
+                <p class="LogoText">Pikaiq</p>
+                <div class="rightMenu">
+                    <div class="nameUsername">
+                          {% if current_user.is_authenticated   %}
+                        <p class="username">{{ current_user.login }} </p>
+                          {% else %}
+                        <p class="username">Name</p>
+                        <p class="username">Second name</p>
+                          {% endif  %} 
+                    </div>
+                    <div class="burgerMenu">
+                        
+                        <img src="{{ url_for('core.static', filename= 'images/burger/burger.png') }}">
+                    </div>
+                </div>
+            </div>
+            
+        </header>
+
+        <div class="before-tets-content">
+            <div id="quiz-info">
+                <span>Quiz code</span>
+                <span id="quiz-code">{{1111111}}</span>
+            </div>
+            <div class="main-container">
+                <div id="quiz-info">
+                <span id="quiz-name">Quiz name</span>
+                <span id="students-count">Students: {{2}}</span>
+                </div>
+                <div id="students-container" class="teacher">
+                </div>
+                <button type="button" id="start">
+                    Start test
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="test_passing">
+        <div class="main-content">
+            <div id="top-teacher">
+                
+                    <div id="time">
+                        <span id="timer">0:30</span>
+                        <button id="add-time">+15 sec</button>
+                    </div>
+                    <span id="number-quest">{{1}}/{{10}}</span>
+                
+            </div>
+            <div class="question">
+                <div>
+                    <span id = "question_text">{{test.questions[0].question_name}}</span>
+                    {% if test.questions[0].question_image %}
+                        <img src="/tests/static/question_images/{{test.questions[0].question_image}}" alt="" class = "small-img">
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="answers-container">
+                <div class="necessary">
+                    <div class="answer" id="answer1">
+                          {% if test.questions[0].answer_image1 %}
+                            <img src="/tests/static/answer_images/{{test.questions[0].answer_image1}}" alt="Image" class = "small-img"><span id = 'answer-text'> {{test.questions[0].answer_name1}}</span>
+                          {% else %}
+                            <span id = 'answer-text'>{{test.questions[0].answer_name1}}</span>
+                          {% endif %}
+                    </div>
+                    <div class="answer" id="answer2">
+                        {%if test.questions[0].answer_image2 %}
+                            <img src="/tests/static/answer_images/{{test.questions[0].answer_image2}}" alt="Image" class = "small-img"><span id = 'answer-text'> {{test.questions[0].answer_name2}}</span>
+                        {% else %}
+                            <span id = 'answer-text'>{{test.questions[0].answer_name2}}</span>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="additional">
+                    <div class="answer" id="answer3">
+                        if {% test.questions[0].answer_image3 %}
+                            <img src="/tests/static/answer_images/{{test.questions[0].answer_image3}}" alt="Image" class = "small-img"><span id = 'answer-text'>{{test.questions[0].answer_name3}}</span>
+                        {% else %}
+                            <span id = 'answer-text'> test.questions[0].answer_name3 </span>
+                        {% endif %}
+                    </div>
+                    <div class="answer" id="answer4">    
+                        if {% test.questions[0].answer_image4 %}   
+                            <img src="/tests/static/answer_images/{{test.questions[0].answer_image4}}" alt="Image" class = "small-img"><span id = 'answer-text'>{{test.questions[0].answer_name4}}</span>
+                        {% else %}
+                            <span id = 'answer-text'>{{test.questions[0].answer_name4}}</span>
+                        {% endif %}
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+    <div id="timer-modal-window">
+        <div id="modal-timer">
+            5
+        </div>
+    </div>
+
+    <script src="/tests/static/js/test_passing_teacher.js"> </script>
+
+{% endblock content %}

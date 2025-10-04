@@ -4,8 +4,20 @@ const filter_madeByYou = document.getElementById("madeByYou")
 const userTestsDiv = document.getElementById("userTests")
 const nameUsernameRedirect = document.querySelector(".nameUsername")
 const newButtonRedirect = document.querySelector(".newButton")
+const joinBtn = document.querySelector(".joinButton")
+const Username = document.querySelector(".username")
+
+const socket = io(); 
 
 
+joinBtn.addEventListener("click", () => {
+    const quizNumber = document.querySelector(".findText").value
+    socket.emit('connectQuiz', {
+    user: `${Username}`,
+    quizNumber: `${quizNumber}`
+    });
+    window.location.href = `test_passing/${quizNumber}/`
+})
 nameUsernameRedirect.addEventListener("click", () => {
     location.href = "/profile"
 })
